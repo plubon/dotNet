@@ -73,13 +73,17 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="DataLayerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{529c0b92-9dfd-4075-9217-0b61e1e226ef}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{fc421a25-206f-40ce-9b24-4326016b9004}</Project>
+      <Name>Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

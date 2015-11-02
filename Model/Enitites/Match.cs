@@ -1,9 +1,8 @@
 ﻿using System;
 namespace Model.Enitites
 {
-    public class Match
+    public class Match : BaseModel
     {
-        public virtual int Id { get; protected set; }
         public virtual DateTime Date { get; set; }
         public virtual Team HomeTeam { get; set; }
         public virtual Team AwayTeam { get; set; }

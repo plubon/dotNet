@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model.Enitites
 {
-    public class Discipline
+    public class Discipline : BaseModel
     {
-        public virtual int Id { get; protected set; }
         public virtual string Name { get; set; }
         public virtual string Description { get; set; }
         public virtual IList<League> Leagues { get; set; }

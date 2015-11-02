@@ -31,7 +31,6 @@ namespace Model
                 ))
                 .Mappings(m =>
                   m.FluentMappings.AddFromAssemblyOf<HibernateConfiguration>())
-                .ExposeConfiguration(BuildSchema)
                 .BuildSessionFactory();
         }
 

@@ -2,9 +2,8 @@
 
 namespace Model.Enitites
 {
-    public class Team
+    public class Team : BaseModel
     {
-        public virtual int Id { get; protected set; }
         public virtual string Name { get; set; }
         public virtual IList<Player> Players { get; set; }
         public virtual IList<Match> HomeMatches { get; set; }
