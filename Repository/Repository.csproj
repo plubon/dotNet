@@ -54,7 +54,12 @@
   <ItemGroup>
     <Compile Include="AbstractRepository.cs" />
     <Compile Include="DisciplineRepository.cs" />
+    <Compile Include="LeagueRepository.cs" />
+    <Compile Include="MatchRepository.cs" />
+    <Compile Include="NamedModelRepository.cs" />
+    <Compile Include="PlayerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TeamRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -13,7 +13,7 @@ namespace Model.Mappings
         public DisciplineMapping()
         {
             Id(x => x.Id);
-            Map(x => x.Name);
+            Map(x => x.Name).Unique();
             Map(x => x.Description);
             HasMany(x => x.Teams);
             HasMany(x => x.Leagues);

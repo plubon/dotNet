@@ -13,7 +13,7 @@ namespace Model.Mappings
         public LeagueMapping()
         {
             Id(x => x.Id);
-            Map(x => x.Name);
+            Map(x => x.Name).Unique();
             Map(x => x.Description);
             HasMany(x => x.Matches);
             References(x => x.Discipline);

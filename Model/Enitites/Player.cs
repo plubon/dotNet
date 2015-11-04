@@ -2,9 +2,8 @@
 
 namespace Model.Enitites
 {
-    public class Player : BaseModel
+    public class Player : NamedModel
     {
-        public virtual string Name { get; set; }
         public virtual string Nationality { get; set; }
         public virtual IList<Team> Teams { get; set; }
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class DisciplineRepository : NamedModelRepository<Discipline>
+    class PlayerRepository : NamedModelRepository<Player>
     {
     }
 }

@@ -12,22 +12,30 @@ namespace Repository
     public abstract class AbstractRepository<ModelClass> where ModelClass:BaseModel
     {
 
-        private ISessionFactory _session;
-
-        public AbstractRepository()
-        {
-
-        }
+        protected ISessionFactory _session;
 
         protected ISessionFactory getSession()
         {
             return HibernateConfiguration.CreateSessionFactory();
         }
 
-        public ModelClass getById(int id)
+        protected NHibernate.IQueryOver<ModelClass, ModelClass> queryOverModel()
         {
             _session = getSession();
-            var temp = _session.OpenSession().QueryOver<ModelClass>().Where(x => x.Id == id).SingleOrDefault();
+            return _session.OpenSession().QueryOver<ModelClass>();
+        }
+
+
+        public IList<ModelClass> getFromTop(int number, int skip=0)
+        {
+            var temp=queryOverModel().Skip(skip).Take(number).List();
+            _session.Dispose();
+            return temp;
+        }
+
+        public ModelClass getById(int id)
+        {
+            var temp = queryOverModel().Where(x => x.Id == id).SingleOrDefault();
             _session.Dispose();
             return temp;
         }

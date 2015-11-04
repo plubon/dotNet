@@ -13,7 +13,7 @@ namespace Model.Mappings
         public TeamMapping()
         {
             Id(x => x.Id);
-            Map(x => x.Name);
+            Map(x => x.Name).Unique();
             HasManyToMany(x => x.Players)
                 .Cascade.All()
                 .Table("Players_Teams");

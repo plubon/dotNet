@@ -67,6 +67,7 @@
     <Compile Include="Enitites\Discipline.cs" />
     <Compile Include="Enitites\League.cs" />
     <Compile Include="Enitites\Match.cs" />
+    <Compile Include="Enitites\NamedModel.cs" />
     <Compile Include="Enitites\Player.cs" />
     <Compile Include="Enitites\Team.cs" />
     <Compile Include="HibernateConfiguration.cs" />

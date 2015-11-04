@@ -2,9 +2,8 @@
 
 namespace Model.Enitites
 {
-    public class League : BaseModel
+    public class League : NamedModel
     {
-        public virtual string Name { get; set; }
         public virtual string Description { get; set; }
         public virtual IList<Match> Matches { get; set; }
         public virtual Discipline Discipline { get; set; }
