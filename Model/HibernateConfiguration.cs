@@ -15,23 +15,31 @@ namespace Model
     public class HibernateConfiguration
     {
 
-        public HibernateConfiguration()
-        {
+        private static ISessionFactory _sessionFactory;
 
+
+        public static ISession GetSession()
+        {
+            if (_sessionFactory == null)
+            {
+                _sessionFactory = GetSessionFactory();
+            }
+            return _sessionFactory.OpenSession();
         }
-        public static ISessionFactory CreateSessionFactory()
+
+        private static ISessionFactory GetSessionFactory()
         {
             return Fluently.Configure()
-                .Database(
-                  MySQLConfiguration.Standard.ConnectionString(c => c
-                    .Server("23133.m.tld.pl")
-                    .Database("baza23133_46")
-                    .Username("admin23133_46")
-                    .Password("5KgaYaf3)V")
-                ))
-                .Mappings(m =>
-                  m.FluentMappings.AddFromAssemblyOf<HibernateConfiguration>())
-                .BuildSessionFactory();
+                    .Database(
+                      MySQLConfiguration.Standard.ConnectionString(c => c
+                        .Server("23133.m.tld.pl")
+                        .Database("baza23133_46")
+                        .Username("admin23133_46")
+                        .Password("5KgaYaf3)V")
+                    ))
+                    .Mappings(m =>
+                      m.FluentMappings.AddFromAssemblyOf<HibernateConfiguration>())
+                    .BuildSessionFactory();
         }
 
         private static void BuildSchema(Configuration config)

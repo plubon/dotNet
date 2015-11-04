@@ -9,24 +9,24 @@ namespace Repository
 {
     class MatchRepository : AbstractRepository<Match>
     {
-        public IList<Match> getAllMatchesOfTeam(Team t)
+        public IList<Match> GetAllMatchesOfTeam(Team t)
         {
-            var temp = queryOverModel().Where(x => x.HomeTeam.Id == t.Id | x.AwayTeam.Id == t.Id).List();
-            _session.Dispose();
+            var temp = QueryOverModel().Where(x => x.HomeTeam.Id == t.Id | x.AwayTeam.Id == t.Id).List();
+            _session.Close();
             return temp;
         }
 
-        public IList<Match> getAllMatchesOfTeam(int id)
+        public IList<Match> GetAllMatchesOfTeam(int id)
         {
-            var temp = queryOverModel().Where(x => x.HomeTeam.Id == id | x.AwayTeam.Id == id).List();
-            _session.Dispose();
+            var temp = QueryOverModel().Where(x => x.HomeTeam.Id == id | x.AwayTeam.Id == id).List();
+            _session.Close();
             return temp;
         }
 
-        public IList<Match> getAllMatchesOfTeam(string name)
+        public IList<Match> GetAllMatchesOfTeam(string name)
         {
-            var temp = queryOverModel().Where(x => x.HomeTeam.Name == name | x.AwayTeam.Name == name).List();
-            _session.Dispose();
+            var temp = QueryOverModel().Where(x => x.HomeTeam.Name == name | x.AwayTeam.Name == name).List();
+            _session.Close();
             return temp;
         }
     }

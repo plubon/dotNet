@@ -9,10 +9,10 @@ namespace Repository
 {
     public abstract class NamedModelRepository<ModelClass> : AbstractRepository<ModelClass>  where ModelClass:NamedModel 
     {
-        ModelClass getByName(string name)
+        ModelClass GetByName(string name)
         {
-            var temp = queryOverModel().Where(x => x.Name.Equals(name)).SingleOrDefault();
-            _session.Dispose();
+            var temp = QueryOverModel().Where(x => x.Name.Equals(name)).SingleOrDefault();
+            _session.Close();
             return temp;
         }
     }

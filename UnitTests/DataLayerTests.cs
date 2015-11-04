@@ -12,8 +12,7 @@ namespace UnitTests
         [TestMethod]
         public void TestDbAccess()
         {
-            var sessionFactory = HibernateConfiguration.CreateSessionFactory();
-            using (var session = sessionFactory.OpenSession())
+            using (var session = HibernateConfiguration.GetSession())
             {
                 var result = session.QueryOver<Discipline>().List();
                 Assert.IsTrue(result.Count > 0);
@@ -24,7 +23,7 @@ namespace UnitTests
         public void TestAbstractRepo()
         {
             var repo = new DisciplineRepository();
-            var d=repo.getById(1);
+            var d=repo.GetById(1);
             Assert.IsNotNull(d);
         }
     }

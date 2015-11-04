@@ -12,46 +12,57 @@ namespace Repository
     public abstract class AbstractRepository<ModelClass> where ModelClass:BaseModel
     {
 
-        protected ISessionFactory _session;
+        protected ISession _session;
 
-        protected ISessionFactory getSession()
+        protected void OpenSession()
         {
-            return HibernateConfiguration.CreateSessionFactory();
+            _session = HibernateConfiguration.GetSession();
         }
 
-        protected NHibernate.IQueryOver<ModelClass, ModelClass> queryOverModel()
+        protected void CloseSession()
         {
-            _session = getSession();
-            return _session.OpenSession().QueryOver<ModelClass>();
+            _session.Close();
+        }
+
+        protected NHibernate.IQueryOver<ModelClass, ModelClass> QueryOverModel()
+        {
+            OpenSession();
+            return _session.QueryOver<ModelClass>();
         }
 
 
-        public IList<ModelClass> getFromTop(int number, int skip=0)
+        public IList<ModelClass> GetFromTop(int number, int skip=0)
         {
-            var temp=queryOverModel().Skip(skip).Take(number).List();
-            _session.Dispose();
+            var temp=QueryOverModel().Skip(skip).Take(number).List();
+            _session.Close();
             return temp;
         }
 
-        public ModelClass getById(int id)
+        public ModelClass GetById(int id)
         {
-            var temp = queryOverModel().Where(x => x.Id == id).SingleOrDefault();
-            _session.Dispose();
+            var temp = QueryOverModel().Where(x => x.Id == id).SingleOrDefault();
+            _session.Close();
             return temp;
         }
 
-        public void saveOrUpdate(ModelClass entity)
+        public void SaveOrUpdate(ModelClass entity)
         {
-            _session = getSession();
-            _session.OpenSession().SaveOrUpdate(entity);
-            _session.Dispose();
+            OpenSession();
+            
+            {
+                _session.SaveOrUpdate(entity);
+            }
+            _session.Close();
         }
 
-        public void delete(ModelClass entity)
+        public void Delete(ModelClass entity)
         {
-            _session = getSession();
-            _session.OpenSession().Delete(entity);
-            _session.Dispose();
+            OpenSession();
+            using (ITransaction transaction = _session.BeginTransaction())
+            {
+                _session.Delete(entity);
+            }
+            _session.Close();
         }
     }
 }
