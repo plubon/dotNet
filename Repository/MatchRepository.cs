@@ -29,5 +29,12 @@ namespace Repository
             _session.Close();
             return temp;
         }
+
+        public IList<Match> GetFromTimeInterval(DateTime start, DateTime end)
+        {
+            var temp = QueryOverModel().Where(x => x.Date.CompareTo(start) > 0 & x.Date.CompareTo(end) <0).List();
+            _session.Close();
+            return temp;
+        }
     }
 }

@@ -19,6 +19,13 @@ namespace Repository
             _session = HibernateConfiguration.GetSession();
         }
 
+       public IList<ModelClass> GetAll()
+        {
+            var temp = QueryOverModel().List();
+            CloseSession();
+            return temp;
+        }
+
         protected void CloseSession()
         {
             _session.Close();
