@@ -65,9 +65,10 @@ namespace Repository
         public void Delete(ModelClass entity)
         {
             OpenSession();
-            using (ITransaction transaction = _session.BeginTransaction())
+            //using (ITransaction transaction = _session.BeginTransaction())
             {
                 _session.Delete(entity);
+                _session.Flush();
             }
             _session.Close();
         }
