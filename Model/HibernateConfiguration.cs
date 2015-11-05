@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using NHibernate.Cfg;
 using System.IO;
 using NHibernate.Tool.hbm2ddl;
+using FluentNHibernate.Conventions.Helpers;
 
 namespace Model
 {
@@ -38,7 +39,8 @@ namespace Model
                         .Password("5KgaYaf3)V")
                     ))
                     .Mappings(m =>
-                      m.FluentMappings.AddFromAssemblyOf<HibernateConfiguration>())
+                      m.FluentMappings.AddFromAssemblyOf<HibernateConfiguration>().Conventions.Add(DefaultLazy.Never()))
+                      //.ExposeConfiguration(cfg => BuildSchema(cfg) )
                     .BuildSessionFactory();
         }
 
