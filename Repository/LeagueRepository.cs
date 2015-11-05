@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    class LeagueRepository : NamedModelRepository<League>
+    public class LeagueRepository : NamedModelRepository<League>
     {
         public IList<League> GetByDiscipline(Discipline d)
         {

@@ -27,7 +27,7 @@ namespace View
             if (loginBox.Text == login && passwordBox.Text == password)
             {
                 this.Hide();
-                new DisciplineForm().Show();
+                new DisciplinesView().Show();
             }
             else
             {

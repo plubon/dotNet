@@ -15,11 +15,11 @@ using Repository;
 
 namespace View
 {
-    public partial class DisciplineForm : MetroForm
+    public partial class DisciplinesView : MetroForm
     {
         private Discipline handle;
         private DisciplineItem item;
-        public DisciplineForm()
+        public DisciplinesView()
         {
             InitializeComponent();
             
@@ -34,7 +34,8 @@ namespace View
             MouseEventArgs me = (MouseEventArgs)e;
             if (me.Button == System.Windows.Forms.MouseButtons.Left)
             {
-
+                var view = new DisciplineElements(handle);
+                view.Show();
             }
             if (me.Button == System.Windows.Forms.MouseButtons.Right)
             {

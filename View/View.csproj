@@ -68,11 +68,17 @@
     <Compile Include="DisciplineCreate.Designer.cs">
       <DependentUpon>DisciplineCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="DisciplineForm.cs">
+    <Compile Include="DisciplineElements.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DisciplineForm.Designer.cs">
-      <DependentUpon>DisciplineForm.cs</DependentUpon>
+    <Compile Include="DisciplineElements.Designer.cs">
+      <DependentUpon>DisciplineElements.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DisciplinesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DisciplinesView.Designer.cs">
+      <DependentUpon>DisciplinesView.cs</DependentUpon>
     </Compile>
     <Compile Include="DisciplineItem.cs">
       <SubType>Component</SubType>
@@ -89,6 +95,18 @@
     <Compile Include="DisciplineUpdate.Designer.cs">
       <DependentUpon>DisciplineUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="LeagueCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeagueCreate.Designer.cs">
+      <DependentUpon>LeagueCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LeaguesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeaguesView.Designer.cs">
+      <DependentUpon>LeaguesView.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,14 +118,23 @@
     <EmbeddedResource Include="DisciplineCreate.resx">
       <DependentUpon>DisciplineCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DisciplineForm.resx">
-      <DependentUpon>DisciplineForm.cs</DependentUpon>
+    <EmbeddedResource Include="DisciplineElements.resx">
+      <DependentUpon>DisciplineElements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DisciplinesView.resx">
+      <DependentUpon>DisciplinesView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DisciplineShow.resx">
       <DependentUpon>DisciplineShow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DisciplineUpdate.resx">
       <DependentUpon>DisciplineUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeagueCreate.resx">
+      <DependentUpon>LeagueCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeaguesView.resx">
+      <DependentUpon>LeaguesView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

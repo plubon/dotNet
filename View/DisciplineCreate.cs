@@ -16,7 +16,7 @@ namespace View
 {
     public partial class DisciplineCreate : MetroForm
     {
-        private DisciplineForm parent;
+        private DisciplinesView parent;
         private Boolean validate()
         {
             bool result = !(nameInput.TextLength == 0 || descriptionInput.TextLength == 0);
@@ -24,7 +24,7 @@ namespace View
             return result;
         }
 
-        public DisciplineCreate(DisciplineForm _parent)
+        public DisciplineCreate(DisciplinesView _parent)
         {
             parent = _parent;
             InitializeComponent();

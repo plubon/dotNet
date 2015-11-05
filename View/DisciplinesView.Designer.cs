@@ -1,6 +1,6 @@
 ﻿namespace View
 {
-    partial class DisciplineForm
+    partial class DisciplinesView
     {
         /// <summary>
         /// Required designer variable.
@@ -46,7 +46,7 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(195, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(175, 6);
             // 
             // metroContextMenu1
             // 
@@ -56,27 +56,27 @@
             this.toolStripMenuItem1,
             this.informationMenuItem});
             this.metroContextMenu1.Name = "metroContextMenu1";
-            this.metroContextMenu1.Size = new System.Drawing.Size(199, 133);
+            this.metroContextMenu1.Size = new System.Drawing.Size(179, 100);
             this.metroContextMenu1.Opening += new System.ComponentModel.CancelEventHandler(this.metroContextMenu1_Opening);
             // 
             // editMenuItem
             // 
             this.editMenuItem.Name = "editMenuItem";
-            this.editMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.editMenuItem.Size = new System.Drawing.Size(178, 30);
             this.editMenuItem.Text = "Edit";
             this.editMenuItem.Click += new System.EventHandler(this.editMenuItem_Click);
             // 
             // removeMenuItem
             // 
             this.removeMenuItem.Name = "removeMenuItem";
-            this.removeMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.removeMenuItem.Size = new System.Drawing.Size(178, 30);
             this.removeMenuItem.Text = "Remove";
             this.removeMenuItem.Click += new System.EventHandler(this.removeMenuItem_Click);
             // 
             // informationMenuItem
             // 
             this.informationMenuItem.Name = "informationMenuItem";
-            this.informationMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.informationMenuItem.Size = new System.Drawing.Size(178, 30);
             this.informationMenuItem.Text = "Information";
             this.informationMenuItem.Click += new System.EventHandler(this.informationMenuItem_Click);
             // 
@@ -123,7 +123,7 @@
             this.addDiscipline.UseSelectable = true;
             this.addDiscipline.Click += new System.EventHandler(this.addDiscipline_Click);
             // 
-            // DisciplineForm
+            // DisciplinesView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,10 +131,10 @@
             this.Controls.Add(this.disciplinesPanel);
             this.Controls.Add(this.addDiscipline);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "DisciplineForm";
+            this.Name = "DisciplinesView";
             this.Padding = new System.Windows.Forms.Padding(30, 92, 30, 31);
             this.Resizable = false;
-            this.Text = "Discipline";
+            this.Text = "Disciplines";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DisciplineForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.metroContextMenu1.ResumeLayout(false);
