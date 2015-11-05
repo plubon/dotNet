@@ -26,5 +26,15 @@ namespace UnitTests
             var d=repo.GetById(1);
             Assert.IsNotNull(d);
         }
+
+        [TestMethod]
+        public void TestGetAll()
+        {
+            var repo = new DisciplineRepository();
+            var d = repo.GetAll();
+            Assert.IsTrue(d.Count > 0);
+            var x = repo.GetFromTop(1);
+            Assert.IsTrue(x.Count > 0);
+        }
     }
 }
