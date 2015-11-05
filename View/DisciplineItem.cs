@@ -17,7 +17,18 @@ namespace View
         {
             discipline = _discipline;
             Text = discipline.Name;
-            Dock = DockStyle.Top;
+            Anchor = AnchorStyles.Top;
+            
+
+            Height = 100;
+            Width = 200;
+
         }
+
+        public Discipline getDiscipline()
+        {
+            return discipline;
+        }
+       
     }
 }

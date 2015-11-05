@@ -30,16 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.maintenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroContextMenu1 = new MetroFramework.Controls.MetroContextMenu(this.components);
+            this.editMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.informationMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroStyleExtender = new MetroFramework.Components.MetroStyleExtender(this.components);
+            this.disciplinesPanel = new System.Windows.Forms.TableLayoutPanel();
             this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
             this.metroToolTip = new MetroFramework.Components.MetroToolTip();
-            this.disciplinesPanel = new MetroFramework.Controls.MetroPanel();
             this.addDiscipline = new MetroFramework.Controls.MetroTile();
             this.metroContextMenu1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
@@ -48,49 +46,58 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(181, 6);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
-            this.exitToolStripMenuItem.Text = "E&xit";
-            // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
-            this.settingsToolStripMenuItem.Text = "&Settings";
-            // 
-            // toolsToolStripMenuItem
-            // 
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
-            this.toolsToolStripMenuItem.Text = "&Tools";
-            // 
-            // maintenanceToolStripMenuItem
-            // 
-            this.maintenanceToolStripMenuItem.Name = "maintenanceToolStripMenuItem";
-            this.maintenanceToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
-            this.maintenanceToolStripMenuItem.Text = "&Maintenance";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
-            this.fileToolStripMenuItem.Text = "&File";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(195, 6);
             // 
             // metroContextMenu1
             // 
             this.metroContextMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.maintenanceToolStripMenuItem,
-            this.toolsToolStripMenuItem,
-            this.settingsToolStripMenuItem,
+            this.editMenuItem,
+            this.removeMenuItem,
             this.toolStripMenuItem1,
-            this.exitToolStripMenuItem});
+            this.informationMenuItem});
             this.metroContextMenu1.Name = "metroContextMenu1";
-            this.metroContextMenu1.Size = new System.Drawing.Size(185, 160);
+            this.metroContextMenu1.Size = new System.Drawing.Size(199, 133);
+            this.metroContextMenu1.Opening += new System.ComponentModel.CancelEventHandler(this.metroContextMenu1_Opening);
+            // 
+            // editMenuItem
+            // 
+            this.editMenuItem.Name = "editMenuItem";
+            this.editMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.editMenuItem.Text = "Edit";
+            this.editMenuItem.Click += new System.EventHandler(this.editMenuItem_Click);
+            // 
+            // removeMenuItem
+            // 
+            this.removeMenuItem.Name = "removeMenuItem";
+            this.removeMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.removeMenuItem.Text = "Remove";
+            this.removeMenuItem.Click += new System.EventHandler(this.removeMenuItem_Click);
+            // 
+            // informationMenuItem
+            // 
+            this.informationMenuItem.Name = "informationMenuItem";
+            this.informationMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.informationMenuItem.Text = "Information";
+            this.informationMenuItem.Click += new System.EventHandler(this.informationMenuItem_Click);
+            // 
+            // disciplinesPanel
+            // 
+            this.disciplinesPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroStyleExtender.SetApplyMetroTheme(this.disciplinesPanel, true);
+            this.disciplinesPanel.AutoScroll = true;
+            this.disciplinesPanel.ColumnCount = 3;
+            this.disciplinesPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.disciplinesPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.disciplinesPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 328F));
+            this.disciplinesPanel.Location = new System.Drawing.Point(10, 223);
+            this.disciplinesPanel.Name = "disciplinesPanel";
+            this.disciplinesPanel.RowCount = 1;
+            this.disciplinesPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.disciplinesPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.disciplinesPanel.Size = new System.Drawing.Size(1146, 495);
+            this.disciplinesPanel.TabIndex = 3;
             // 
             // metroStyleManager
             // 
@@ -103,28 +110,14 @@
             this.metroToolTip.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroToolTip.Popup += new System.Windows.Forms.PopupEventHandler(this.metroToolTip_Popup);
             // 
-            // disciplinesPanel
-            // 
-            this.disciplinesPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.disciplinesPanel.HorizontalScrollbarBarColor = true;
-            this.disciplinesPanel.HorizontalScrollbarHighlightOnWheel = false;
-            this.disciplinesPanel.HorizontalScrollbarSize = 10;
-            this.disciplinesPanel.Location = new System.Drawing.Point(34, 190);
-            this.disciplinesPanel.Name = "disciplinesPanel";
-            this.disciplinesPanel.Size = new System.Drawing.Size(1015, 508);
-            this.disciplinesPanel.TabIndex = 1;
-            this.disciplinesPanel.VerticalScrollbarBarColor = true;
-            this.disciplinesPanel.VerticalScrollbarHighlightOnWheel = false;
-            this.disciplinesPanel.VerticalScrollbarSize = 10;
-            // 
             // addDiscipline
             // 
             this.addDiscipline.ActiveControl = null;
-            this.addDiscipline.Location = new System.Drawing.Point(753, 56);
+            this.addDiscipline.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.addDiscipline.Location = new System.Drawing.Point(774, 63);
             this.addDiscipline.Name = "addDiscipline";
-            this.addDiscipline.Size = new System.Drawing.Size(296, 128);
+            this.addDiscipline.Size = new System.Drawing.Size(382, 128);
             this.addDiscipline.TabIndex = 2;
             this.addDiscipline.Text = "Add Discipline";
             this.addDiscipline.UseSelectable = true;
@@ -134,13 +127,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 732);
-            this.Controls.Add(this.addDiscipline);
+            this.ClientSize = new System.Drawing.Size(1168, 730);
             this.Controls.Add(this.disciplinesPanel);
+            this.Controls.Add(this.addDiscipline);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "DisciplineForm";
             this.Padding = new System.Windows.Forms.Padding(30, 92, 30, 31);
+            this.Resizable = false;
             this.Text = "Discipline";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DisciplineForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.metroContextMenu1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
@@ -152,15 +147,13 @@
 
         private MetroFramework.Components.MetroToolTip metroToolTip;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem maintenanceToolStripMenuItem;
         private MetroFramework.Components.MetroStyleExtender metroStyleExtender;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private MetroFramework.Controls.MetroContextMenu metroContextMenu1;
         private MetroFramework.Components.MetroStyleManager metroStyleManager;
-        private MetroFramework.Controls.MetroPanel disciplinesPanel;
         private MetroFramework.Controls.MetroTile addDiscipline;
+        private System.Windows.Forms.TableLayoutPanel disciplinesPanel;
+        private System.Windows.Forms.ToolStripMenuItem editMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem informationMenuItem;
     }
 }
