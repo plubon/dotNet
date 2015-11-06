@@ -40,7 +40,7 @@ namespace Model
                     ))
                     .Mappings(m =>
                       m.FluentMappings.AddFromAssemblyOf<HibernateConfiguration>().Conventions.Add(DefaultLazy.Never()))
-                      //.ExposeConfiguration(cfg => BuildSchema(cfg) )
+                      .ExposeConfiguration(cfg => BuildSchema(cfg) )
                     .BuildSessionFactory();
         }
 

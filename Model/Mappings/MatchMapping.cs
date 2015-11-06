@@ -16,9 +16,9 @@ namespace Model.Mappings
             Map(x => x.Date);
             Map(x => x.HomeTeamScore);
             Map(x => x.AwayTeamScore);
-            References(x => x.HomeTeam);
-            References(x => x.AwayTeam);
-            References(x => x.League);
+            References(x => x.HomeTeam).Nullable();
+            References(x => x.AwayTeam).Nullable();
+            References(x => x.League).Cascade.Delete();
         }
     }
 }

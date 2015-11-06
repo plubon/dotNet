@@ -16,7 +16,7 @@ namespace Model.Mappings
             Map(x => x.Name).Unique();
             Map(x => x.Description);
             HasMany(x => x.Matches);
-            References(x => x.Discipline);
+            References(x => x.Discipline).Cascade.Delete();
         }
     }
 }

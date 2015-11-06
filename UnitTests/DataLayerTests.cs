@@ -10,8 +10,32 @@ namespace UnitTests
     public class DataLayerTests
     {
         [TestMethod]
+        public void TestKeys()
+        {
+            DisciplineRepository d = new DisciplineRepository();
+            var a = new Discipline();
+            a.Name = "test";
+            a.Description = "test";
+            d.SaveOrUpdate(a);
+            LeagueRepository l = new LeagueRepository();
+            var x = new League();
+            x.Name = "test league";
+            x.Description = "test";
+            x.Discipline = a;
+            l.SaveOrUpdate(x);
+            d.Delete(a);
+            Assert.IsTrue(true);
+        }
+
+        [TestMethod]
         public void TestDbAccess()
         {
+
+            DisciplineRepository d = new DisciplineRepository();
+            var a = new Discipline();
+            a.Name = "test";
+            a.Description = "test";
+            d.SaveOrUpdate(a);
             using (var session = HibernateConfiguration.GetSession())
             {
                 var result = session.QueryOver<Discipline>().List();
