@@ -29,7 +29,7 @@ namespace View
         public MatchCreate(Discipline discipline)
         {
             InitializeComponent();
-            foreach (Team team in teamRepository.GetAll())
+            foreach (Team team in discipline.Teams)
             {
                 teamHomeBox.Items.Add(team);
                 teamAwayBox.Items.Add(team);
@@ -44,7 +44,7 @@ namespace View
         {
             handle = _handle;
             InitializeComponent();
-            foreach (Team team in teamRepository.GetAll())
+            foreach (Team team in discipline.Teams)
             {
                 teamHomeBox.Items.Add(team);
                 teamAwayBox.Items.Add(team);

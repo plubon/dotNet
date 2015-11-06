@@ -58,7 +58,18 @@ namespace View
                 int row = teamGrid.CurrentCell.RowIndex;
                 var ID = Int32.Parse(teamGrid[teamGrid.ColumnCount - 1, row].Value.ToString());
                 Team handler = repo.GetById(ID);
-                repo.Delete(handler);
+                try
+                {
+                    repo.Delete(handler);
+                }
+                catch (Exception)
+                {
+
+                    MetroMessageBox.Show(this,
+                      "We are sorry but the action couldn't be finished, please try again later and if the problem remains contact aout support team.",
+                      "Whoops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
                 update();
             }
         }

@@ -78,7 +78,18 @@ namespace View
                 int row = leaguesGrid.CurrentCell.RowIndex;
                 var ID = Int32.Parse(leaguesGrid[leaguesGrid.ColumnCount - 1, row].Value.ToString());
                 League handler = repo.GetById(ID);
-                repo.Delete(handler);
+                try
+                {
+                    repo.Delete(handler);
+                }
+                catch (Exception)
+                {
+
+                    MetroMessageBox.Show(this,
+                       "We are sorry but you can't delete element which other elements depend on. Please remove all elements depending on this one and then try again.",
+                       "Whoops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
                 update();
             }
         }

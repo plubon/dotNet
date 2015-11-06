@@ -102,12 +102,24 @@ namespace View
         private void removeMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MetroMessageBox.Show(this, "Are you sure you want to remove element?","Remove",MessageBoxButtons.YesNo,
-                   MessageBoxIcon.Question);
+                   MessageBoxIcon.Error);
             if (result == DialogResult.Yes)
             {
                 var repo = new DisciplineRepository();
-                repo.Delete(handle);
-                disciplinesPanel.Controls.Remove(item);
+                try
+                {
+                    repo.Delete(handle);
+                    disciplinesPanel.Controls.Remove(item);
+                }
+                catch (Exception)
+                {
+
+                    MetroMessageBox.Show(this,
+                        "We are sorry but you can't delete element which other elements depend on. Please remove all elements depending on this one and then try again.",
+                        "Whoops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+           
                
             }
     

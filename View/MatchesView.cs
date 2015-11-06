@@ -71,7 +71,18 @@ namespace View
                 int row = matchesGrid.CurrentCell.RowIndex;
                 var ID = Int32.Parse(matchesGrid[matchesGrid.ColumnCount - 1, row].Value.ToString());
                 Match handler = repo.GetById(ID);
-                repo.Delete(handler);
+                try
+                {
+                    repo.Delete(handler);
+                }
+                catch (Exception)
+                {
+
+                    MetroMessageBox.Show(this,
+                       "We are sorry but you can't delete element which other elements depend on. Please remove all elements depending on this one and then try again.",
+                       "Whoops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+           
                 update();
             }
         }
