@@ -19,6 +19,7 @@ namespace Model.Mappings
                 .Table("Players_Teams");
             HasMany(x => x.HomeMatches);
             HasMany(x => x.AwayMatches);
+            References(x => x.Discipline);
         }
     }
 }

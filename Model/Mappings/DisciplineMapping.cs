@@ -15,8 +15,8 @@ namespace Model.Mappings
             Id(x => x.Id);
             Map(x => x.Name).Unique();
             Map(x => x.Description);
-            HasMany(x => x.Teams);
-            HasMany(x => x.Leagues);
+            HasMany(x => x.Teams).Inverse();
+            HasMany(x => x.Leagues).Inverse();
         }
     }
 }

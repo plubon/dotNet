@@ -8,5 +8,6 @@ namespace Model.Enitites
         public virtual Team AwayTeam { get; set; }
         public virtual int HomeTeamScore { get; set; }
         public virtual int AwayTeamScore { get; set; }
+        public virtual League League { get; set; }
     }
 }

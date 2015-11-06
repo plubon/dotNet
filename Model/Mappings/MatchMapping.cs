@@ -18,6 +18,7 @@ namespace Model.Mappings
             Map(x => x.AwayTeamScore);
             References(x => x.HomeTeam);
             References(x => x.AwayTeam);
+            References(x => x.League);
         }
     }
 }
