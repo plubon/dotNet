@@ -38,11 +38,8 @@ namespace View
                     League newLeague = new League();
                     newLeague.Description = descriptionInput.Text;
                     newLeague.Name = nameInput.Text;
-                    var DisciplineRepo = new DisciplineRepository();
-
-                    Discipline disciplineH = DisciplineRepo.GetById(discipline.Id);
-                    newLeague.Discipline = disciplineH;
-                    
+                    newLeague.Discipline = discipline;
+                    newLeague.Matches = new List<Match>();
                     var repo = new LeagueRepository();
                     repo.SaveOrUpdate(newLeague);
                     DialogResult result = MetroMessageBox.Show(this, "League created!", "Success!", MessageBoxButtons.OK,

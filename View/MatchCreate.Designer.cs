@@ -40,6 +40,8 @@
             this.saveButton = new MetroFramework.Controls.MetroButton();
             this.matchDate = new MetroFramework.Controls.MetroDateTime();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.leagueBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.team1Score)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.team2Score)).BeginInit();
             this.SuspendLayout();
@@ -148,11 +150,30 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Date:";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(24, 419);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(63, 20);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "League";
+            // 
+            // leagueBox
+            // 
+            this.leagueBox.FormattingEnabled = true;
+            this.leagueBox.Location = new System.Drawing.Point(28, 443);
+            this.leagueBox.Name = "leagueBox";
+            this.leagueBox.Size = new System.Drawing.Size(271, 28);
+            this.leagueBox.TabIndex = 13;
+            // 
             // MatchCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 651);
+            this.Controls.Add(this.leagueBox);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.matchDate);
             this.Controls.Add(this.dismissButton);
@@ -191,5 +212,7 @@
         private MetroFramework.Controls.MetroButton saveButton;
         private MetroFramework.Controls.MetroDateTime matchDate;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox leagueBox;
     }
 }

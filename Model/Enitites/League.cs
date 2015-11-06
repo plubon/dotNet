@@ -7,5 +7,10 @@ namespace Model.Enitites
         public virtual string Description { get; set; }
         public virtual IList<Match> Matches { get; set; }
         public virtual Discipline Discipline { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

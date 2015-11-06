@@ -38,6 +38,8 @@ namespace View
                 Discipline newDiscipline = new Discipline();
                 newDiscipline.Description = descriptionInput.Text;
                 newDiscipline.Name = nameInput.Text;
+                newDiscipline.Teams = new List<Team>();
+                newDiscipline.Leagues = new List<League>();
                 var repo = new DisciplineRepository();
                 repo.SaveOrUpdate(newDiscipline);
                 DialogResult result = MetroMessageBox.Show(this, "Discipline created!", "Success!", MessageBoxButtons.OK,

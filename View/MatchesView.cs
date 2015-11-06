@@ -18,11 +18,13 @@ namespace View
     {
         private MatchRepository repo = new MatchRepository();
         private BindingSource bindingSource1 = new BindingSource();
-
-        public MatchesView()
+        private Discipline discipline;
+ 
+        public MatchesView(Discipline _discipline)
         {
+            discipline = _discipline;
             InitializeComponent();
-            bindingSource1.DataSource = repo.GetAll();
+            bindingSource1.DataSource = repo.GetAll().Where(x => x.League != null && x.League.Discipline.Id == discipline.Id);
             matchesGrid.DataSource = bindingSource1;
             matchesGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             matchesGrid.MultiSelect = false;
@@ -32,7 +34,7 @@ namespace View
         {
             matchesGrid.DataSource = null;
             bindingSource1 = new BindingSource();
-            bindingSource1.DataSource = repo.GetAll();
+            bindingSource1.DataSource = repo.GetAll().Where(x => x.League != null && x.League.Discipline.Id == discipline.Id);
             matchesGrid.DataSource = bindingSource1;
         }
         private void dgv_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -47,7 +49,7 @@ namespace View
 
         private void addTeam_Click(object sender, EventArgs e)
         {
-            var view = new MatchCreate();
+            var view = new MatchCreate(discipline);
             view.Show();
         }
 
@@ -56,7 +58,7 @@ namespace View
             int row = matchesGrid.CurrentCell.RowIndex;
             var ID = Int32.Parse(matchesGrid[matchesGrid.ColumnCount - 1, row].Value.ToString());
             Match handler = repo.GetById(ID);
-            var view = new MatchCreate(handler);
+            var view = new MatchCreate(discipline,handler);
             view.Show();
         }
 
