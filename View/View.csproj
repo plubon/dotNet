@@ -101,6 +101,12 @@
     <Compile Include="LeagueCreate.Designer.cs">
       <DependentUpon>LeagueCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="LeagueShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeagueShow.Designer.cs">
+      <DependentUpon>LeagueShow.cs</DependentUpon>
+    </Compile>
     <Compile Include="LeaguesView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,15 +125,35 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MatchesView.cs" />
+    <Compile Include="MatchCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MatchCreate.Designer.cs">
+      <DependentUpon>MatchCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MatchesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MatchesView.Designer.cs">
       <DependentUpon>MatchesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MatchShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MatchShow.Designer.cs">
+      <DependentUpon>MatchShow.cs</DependentUpon>
     </Compile>
     <Compile Include="PlayerCreate.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PlayerCreate.Designer.cs">
       <DependentUpon>PlayerCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlayerShow.Designer.cs">
+      <DependentUpon>PlayerShow.cs</DependentUpon>
     </Compile>
     <Compile Include="PlayersView.cs">
       <SubType>Form</SubType>
@@ -142,6 +168,12 @@
     </Compile>
     <Compile Include="TeamCreate.Designer.cs">
       <DependentUpon>TeamCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TeamShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeamShow.Designer.cs">
+      <DependentUpon>TeamShow.cs</DependentUpon>
     </Compile>
     <Compile Include="TeamsView.cs">
       <SubType>Form</SubType>
@@ -167,6 +199,9 @@
     <EmbeddedResource Include="LeagueCreate.resx">
       <DependentUpon>LeagueCreate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LeagueShow.resx">
+      <DependentUpon>LeagueShow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LeaguesView.resx">
       <DependentUpon>LeaguesView.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,11 +211,20 @@
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MatchCreate.resx">
+      <DependentUpon>MatchCreate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MatchesView.resx">
       <DependentUpon>MatchesView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MatchShow.resx">
+      <DependentUpon>MatchShow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlayerCreate.resx">
       <DependentUpon>PlayerCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlayerShow.resx">
+      <DependentUpon>PlayerShow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlayersView.resx">
       <DependentUpon>PlayersView.cs</DependentUpon>
@@ -196,6 +240,9 @@
     </Compile>
     <EmbeddedResource Include="TeamCreate.resx">
       <DependentUpon>TeamCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeamShow.resx">
+      <DependentUpon>TeamShow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TeamsView.resx">
       <DependentUpon>TeamsView.cs</DependentUpon>

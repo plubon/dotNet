@@ -58,6 +58,7 @@ namespace Repository
             
             {
                 _session.SaveOrUpdate(entity);
+                _session.Flush();
             }
             _session.Close();
         }

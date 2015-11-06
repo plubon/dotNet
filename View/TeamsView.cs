@@ -20,8 +20,14 @@ namespace View
         {
             InitializeComponent();
             update();
+            teamGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            teamGrid.MultiSelect = false;
+            teamGrid.RowPrePaint += new DataGridViewRowPrePaintEventHandler(dgv_RowPrePaint);
         }
-
+        private void dgv_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            e.PaintParts &= ~DataGridViewPaintParts.Focus;
+        }
         private void TeamsView_Load(object sender, EventArgs e)
         {
 
@@ -43,7 +49,7 @@ namespace View
       
         private void metroButton3_Click(object sender, EventArgs e)
         {
-            DialogResult res = MetroMessageBox.Show(this, "Do you really want to remove this league?", "Remove league.",
+            DialogResult res = MetroMessageBox.Show(this, "Do you really want to remove this team?", "Remove team.",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Error);
             if (res == DialogResult.Yes)
             {
@@ -74,6 +80,25 @@ namespace View
             var ID = Int32.Parse(teamGrid[teamGrid.ColumnCount - 1, row].Value.ToString());
             Team handler = repo.GetById(ID);
             var view = new TeamCreate(handler);
+            view.Show();
+        }
+
+        private void metroTile1_ChangeUICues(object sender, UICuesEventArgs e)
+        {
+
+        }
+
+        private void teamGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void showSellectedTeam(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = teamGrid.CurrentCell.RowIndex;
+            var ID = Int32.Parse(teamGrid[teamGrid.ColumnCount - 1, row].Value.ToString());
+            Team handler = repo.GetById(ID);
+            var view = new TeamShow(handler);
             view.Show();
         }
 

@@ -28,74 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroButton3 = new MetroFramework.Controls.MetroButton();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.addPlayer = new MetroFramework.Controls.MetroTile();
             this.playersGrid = new System.Windows.Forms.DataGridView();
+            this.metroTile2 = new MetroFramework.Controls.MetroTile();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.addTeam = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.playersGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // metroButton3
-            // 
-            this.metroButton3.Location = new System.Drawing.Point(358, 128);
-            this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(163, 48);
-            this.metroButton3.TabIndex = 10;
-            this.metroButton3.Text = "Remove";
-            this.metroButton3.UseSelectable = true;
-            this.metroButton3.Click += new System.EventHandler(this.metroButton3_Click);
-            // 
-            // metroButton2
-            // 
-            this.metroButton2.Location = new System.Drawing.Point(189, 128);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(163, 48);
-            this.metroButton2.TabIndex = 9;
-            this.metroButton2.Text = "Edit";
-            this.metroButton2.UseSelectable = true;
-            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
-            // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(24, 128);
+            this.metroButton1.Location = new System.Drawing.Point(16, 215);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(158, 48);
+            this.metroButton1.Size = new System.Drawing.Size(131, 48);
             this.metroButton1.TabIndex = 8;
             this.metroButton1.Text = "Refresh Data";
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
-            // addPlayer
-            // 
-            this.addPlayer.ActiveControl = null;
-            this.addPlayer.Location = new System.Drawing.Point(637, 71);
-            this.addPlayer.Name = "addPlayer";
-            this.addPlayer.Size = new System.Drawing.Size(232, 105);
-            this.addPlayer.TabIndex = 7;
-            this.addPlayer.Text = "Add Player";
-            this.addPlayer.UseSelectable = true;
-            this.addPlayer.Click += new System.EventHandler(this.addPlayer_Click);
-            // 
             // playersGrid
             // 
             this.playersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.playersGrid.Location = new System.Drawing.Point(23, 182);
+            this.playersGrid.Location = new System.Drawing.Point(15, 269);
             this.playersGrid.Name = "playersGrid";
             this.playersGrid.RowTemplate.Height = 28;
             this.playersGrid.Size = new System.Drawing.Size(846, 394);
             this.playersGrid.TabIndex = 6;
             this.playersGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.playersGrid_CellContentClick);
+            this.playersGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showSelectedPlayer);
+            // 
+            // metroTile2
+            // 
+            this.metroTile2.ActiveControl = null;
+            this.metroTile2.Location = new System.Drawing.Point(153, 158);
+            this.metroTile2.Name = "metroTile2";
+            this.metroTile2.Size = new System.Drawing.Size(232, 105);
+            this.metroTile2.Style = MetroFramework.MetroColorStyle.Yellow;
+            this.metroTile2.TabIndex = 15;
+            this.metroTile2.Text = "Update Player";
+            this.metroTile2.UseSelectable = true;
+            this.metroTile2.Click += new System.EventHandler(this.metroButton2_Click);
+            // 
+            // metroTile1
+            // 
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.Location = new System.Drawing.Point(391, 158);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(232, 105);
+            this.metroTile1.Style = MetroFramework.MetroColorStyle.Red;
+            this.metroTile1.TabIndex = 14;
+            this.metroTile1.Text = "Remove Player";
+            this.metroTile1.UseSelectable = true;
+            this.metroTile1.Click += new System.EventHandler(this.metroButton3_Click);
+            // 
+            // addTeam
+            // 
+            this.addTeam.ActiveControl = null;
+            this.addTeam.Location = new System.Drawing.Point(629, 158);
+            this.addTeam.Name = "addTeam";
+            this.addTeam.Size = new System.Drawing.Size(232, 105);
+            this.addTeam.Style = MetroFramework.MetroColorStyle.Green;
+            this.addTeam.TabIndex = 13;
+            this.addTeam.Text = "Add Player";
+            this.addTeam.UseSelectable = true;
+            this.addTeam.Click += new System.EventHandler(this.addPlayer_Click);
             // 
             // PlayersView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(885, 597);
-            this.Controls.Add(this.metroButton3);
-            this.Controls.Add(this.metroButton2);
+            this.ClientSize = new System.Drawing.Size(881, 678);
+            this.Controls.Add(this.metroTile2);
+            this.Controls.Add(this.metroTile1);
+            this.Controls.Add(this.addTeam);
             this.Controls.Add(this.metroButton1);
-            this.Controls.Add(this.addPlayer);
             this.Controls.Add(this.playersGrid);
             this.Name = "PlayersView";
             this.Text = "Players";
@@ -107,10 +113,10 @@
 
         #endregion
 
-        private MetroFramework.Controls.MetroButton metroButton3;
-        private MetroFramework.Controls.MetroButton metroButton2;
         private MetroFramework.Controls.MetroButton metroButton1;
-        private MetroFramework.Controls.MetroTile addPlayer;
         private System.Windows.Forms.DataGridView playersGrid;
+        private MetroFramework.Controls.MetroTile metroTile2;
+        private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroTile addTeam;
     }
 }

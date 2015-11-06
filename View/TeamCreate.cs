@@ -60,6 +60,7 @@ namespace View
                 else
                 {
                     Team newTeam = new Team();
+                    newTeam.Players = new List<Player>();
                     newTeam.Name = nameInput.Text;
                     var repo = new TeamRepository();
                     repo.SaveOrUpdate(newTeam);

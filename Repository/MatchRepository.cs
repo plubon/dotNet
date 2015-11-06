@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    class MatchRepository : AbstractRepository<Match>
+    public class MatchRepository : AbstractRepository<Match>
     {
         public IList<Match> GetAllMatchesOfTeam(Team t)
         {

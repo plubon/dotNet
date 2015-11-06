@@ -18,6 +18,7 @@ namespace View
     {
         private PlayerRepository repo = new PlayerRepository();
         private TeamRepository teamRepository = new TeamRepository();
+        private Player handler = null;
 
         private Boolean validate()
         {
@@ -33,6 +34,19 @@ namespace View
             }
         }
 
+        public PlayerCreate(Player _handler)
+        {
+            handler = _handler;
+            InitializeComponent();
+            foreach (Team team in teamRepository.GetAll())
+            {
+                teamsCombo.Items.Add(team);
+            }
+            nameInput.Text = handler.Name;
+            teamsCombo.SelectedItem = handler.Teams;
+            nationalityInput.Text = handler.Nationality;
+
+        }
         private void PlayerCreate_Load(object sender, EventArgs e)
         {
 
@@ -42,25 +56,40 @@ namespace View
         {
             if (validate())
             {
-
-                
-                Player newPlayer = new Player();
-                newPlayer.Nationality = nationalityInput.Text;
-                if (newPlayer.Teams == null) newPlayer.Teams = new List<Team>();
-                
-                newPlayer.Teams.Add((Team) teamsCombo.SelectedItem);
-                
-                
-               
-                newPlayer.Name = nameInput.Text;
-                
-                repo.SaveOrUpdate(newPlayer);
-                DialogResult result = MetroMessageBox.Show(this, "Player created!", "Success!", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                if (result == DialogResult.OK)
+                if (handler == null)
                 {
 
+                    Player newPlayer = new Player();
+                    newPlayer.Nationality = nationalityInput.Text;
+                    if (newPlayer.Teams == null) newPlayer.Teams = new List<Team>();
+                    Team selectedTeam = (Team) teamsCombo.SelectedItem;
+                    newPlayer.Teams.Add(selectedTeam);
+                   // selectedTeam.Players.Add(newPlayer);
+                   // teamRepository.SaveOrUpdate(selectedTeam);
 
+                    newPlayer.Name = nameInput.Text;
+
+                    repo.SaveOrUpdate(newPlayer);
+                    DialogResult result = MetroMessageBox.Show(this, "Player created!", "Success!", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    if (result == DialogResult.OK)
+                    {
+
+
+                    }
+                }
+                else
+                {
+                    Team originalTeam = handler.Teams.First();
+                    originalTeam.Players.Remove(handler);
+                    teamRepository.SaveOrUpdate(originalTeam);
+                    handler.Nationality = nationalityInput.Text;
+                    handler.Teams.Clear();
+                    Team selectedTeam = (Team)teamsCombo.SelectedItem;
+                    handler.Teams.Add(selectedTeam);
+//                    selectedTeam.Players.Add(handler);
+                    teamRepository.SaveOrUpdate(selectedTeam);
+//                    repo.SaveOrUpdate(handler);
                 }
 
 

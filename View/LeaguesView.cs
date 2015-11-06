@@ -25,12 +25,25 @@ namespace View
             InitializeComponent();
             Text = discipline.Name + " Leagues:";
             leaguesGrid.AutoGenerateColumns = true;
-            bindingSource1.DataSource = repo.GetAll().Where(x => x.Discipline.Id == discipline.Id);
+
+
+
+
+            bindingSource1.DataSource = repo.GetAll().Where(x => x.Discipline != null && x.Discipline.Id == discipline.Id);
+            
+           
             System.Console.Write(discipline+"\n");
             //TODO coś jest nie tak, źle tworzy Ligi, mimo że dodaje poprawną dyscyplinę to dą jakieś problemy
             leaguesGrid.DataSource = bindingSource1;
+            leaguesGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            leaguesGrid.MultiSelect = false;
+            leaguesGrid.RowPrePaint += new DataGridViewRowPrePaintEventHandler(dgv_RowPrePaint);
         
 
+        }
+        private void dgv_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            e.PaintParts &= ~DataGridViewPaintParts.Focus;
         }
 
         private void addLeague_Click(object sender, EventArgs e)
@@ -74,8 +87,22 @@ namespace View
         {
             leaguesGrid.DataSource = null;
             bindingSource1 = new BindingSource();
-            bindingSource1.DataSource = repo.GetAll().Where(x => x.Discipline.Id == discipline.Id);
+            bindingSource1.DataSource = repo.GetAll().Where(x => x.Discipline!=null && x.Discipline.Id == discipline.Id);
             leaguesGrid.DataSource = bindingSource1;
+        }
+
+        private void leaguesGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void showSelectedLeague(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = leaguesGrid.CurrentCell.RowIndex;
+            var ID = Int32.Parse(leaguesGrid[leaguesGrid.ColumnCount - 1, row].Value.ToString());
+            League handler = repo.GetById(ID);
+            var view = new LeagueShow(handler);
+            view.Show();
         }
 
     }

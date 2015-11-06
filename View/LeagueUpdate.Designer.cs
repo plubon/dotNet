@@ -52,6 +52,7 @@
             this.dismissButton.TabIndex = 10;
             this.dismissButton.Text = "Dismiss";
             this.dismissButton.UseSelectable = true;
+            this.dismissButton.Click += new System.EventHandler(this.dismissButton_Click);
             // 
             // nameInput
             // 
@@ -90,6 +91,7 @@
             this.saveButton.TabIndex = 9;
             this.saveButton.Text = "Save";
             this.saveButton.UseSelectable = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // LeagueUpdate
             // 

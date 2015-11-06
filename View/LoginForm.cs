@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework;
 
 namespace View
 {
@@ -31,7 +32,7 @@ namespace View
             }
             else
             {
-                MessageBox.Show("Authentication failed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this,"Authentication failed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

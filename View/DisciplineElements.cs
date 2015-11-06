@@ -43,6 +43,7 @@ namespace View
         private void metroTile4_Click(object sender, EventArgs e)
         {
             var view = new MatchesView();
+            view.Show();
         }
     }
 }
