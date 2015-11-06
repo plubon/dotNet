@@ -18,6 +18,7 @@ namespace View
     {
         private MatchRepository repo = new MatchRepository();
         private TeamRepository teamRepository = new TeamRepository();
+        private LeagueRepository leagueRepository = new LeagueRepository();
         private Match handle = null;
         private Boolean validate()
         {
@@ -25,7 +26,7 @@ namespace View
                                 (teamHomeBox.SelectedIndex == teamAwayBox.SelectedIndex) || (team1Score.Value < 0) || (team2Score.Value < 0)); 
             return result;
         }
-        public MatchCreate()
+        public MatchCreate(Discipline discipline)
         {
             InitializeComponent();
             foreach (Team team in teamRepository.GetAll())
@@ -33,9 +34,13 @@ namespace View
                 teamHomeBox.Items.Add(team);
                 teamAwayBox.Items.Add(team);
             }
+            foreach (League league in discipline.Leagues)
+            {
+                leagueBox.Items.Add(league);
+            }
         }
 
-        public MatchCreate(Match _handle)
+        public MatchCreate(Discipline discipline, Match _handle)
         {
             handle = _handle;
             InitializeComponent();
@@ -44,6 +49,11 @@ namespace View
                 teamHomeBox.Items.Add(team);
                 teamAwayBox.Items.Add(team);
             }
+            foreach (League league in discipline.Leagues)
+            {
+                leagueBox.Items.Add(league);
+            }
+
             teamHomeBox.SelectedItem = handle.HomeTeamScore;
             teamAwayBox.SelectedItem = handle.AwayTeam;
             team1Score.Value = handle.HomeTeamScore;
@@ -68,7 +78,7 @@ namespace View
                     newMatch.Date = matchDate.Value;
                     newMatch.HomeTeam = ((Team) teamHomeBox.SelectedItem);
                     newMatch.AwayTeam = (Team) teamAwayBox.SelectedItem;
-
+                    newMatch.League = (League) leagueBox.SelectedItem;
                     repo.SaveOrUpdate(newMatch);
 
                     DialogResult result = MetroMessageBox.Show(this, "Match created!", "Success!", MessageBoxButtons.OK,
@@ -86,7 +96,7 @@ namespace View
                     handle.Date = matchDate.Value;
                     handle.HomeTeam = ((Team)teamHomeBox.SelectedItem);
                     handle.AwayTeam = (Team)teamAwayBox.SelectedItem;
-
+                    handle.League = (League) leagueBox.SelectedItem;
                     repo.SaveOrUpdate(handle);
 
                     DialogResult result = MetroMessageBox.Show(this, "Match created!", "Success!", MessageBoxButtons.OK,

@@ -16,8 +16,10 @@ namespace View
 {
     public partial class TeamsView : MetroForm
     {
-        public TeamsView()
+        private Discipline discipline;
+        public TeamsView(Discipline _discipline)
         {
+            discipline = _discipline;
             InitializeComponent();
             update();
             teamGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -40,7 +42,7 @@ namespace View
 
         private void addTeam_Click(object sender, EventArgs e)
         {
-            var view = new TeamCreate();
+            var view = new TeamCreate(discipline);
             view.Show();
 
         }
@@ -65,7 +67,7 @@ namespace View
         {
             teamGrid.DataSource = null;
             bindingSource1 = new BindingSource();
-            bindingSource1.DataSource = repo.GetAll();
+            bindingSource1.DataSource = repo.GetAll().Where(x=> x.Discipline!=null && x.Discipline.Id == discipline.Id);
             teamGrid.DataSource = bindingSource1;
         }
 
@@ -79,7 +81,7 @@ namespace View
             int row = teamGrid.CurrentCell.RowIndex;
             var ID = Int32.Parse(teamGrid[teamGrid.ColumnCount - 1, row].Value.ToString());
             Team handler = repo.GetById(ID);
-            var view = new TeamCreate(handler);
+            var view = new TeamCreate(discipline,handler);
             view.Show();
         }
 

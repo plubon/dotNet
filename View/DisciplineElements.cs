@@ -30,7 +30,7 @@ namespace View
 
         private void metroTile2_Click(object sender, EventArgs e)
         {
-            var view = new TeamsView();
+            var view = new TeamsView(discipline);
             view.Show();
         }
 
@@ -42,7 +42,7 @@ namespace View
 
         private void metroTile4_Click(object sender, EventArgs e)
         {
-            var view = new MatchesView();
+            var view = new MatchesView(discipline);
             view.Show();
         }
     }

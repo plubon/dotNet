@@ -16,19 +16,22 @@ namespace View
 {
     public partial class TeamCreate : MetroForm
     {
+        private Discipline discipline;
         private Boolean validate()
         {
             Boolean result = nameInput.Text != "";
             return result;
         }
         private Team handle = null;
-        public TeamCreate()
+        public TeamCreate(Discipline _discipline)
         {
+            discipline = _discipline;
             InitializeComponent();
         }
 
-        public TeamCreate(Team _handle)
+        public TeamCreate(Discipline _discipline,Team _handle)
         {
+            discipline = _discipline;
             handle = _handle;
             InitializeComponent();
             nameInput.Text = handle.Name;
@@ -62,6 +65,7 @@ namespace View
                     Team newTeam = new Team();
                     newTeam.Players = new List<Player>();
                     newTeam.Name = nameInput.Text;
+                    newTeam.Discipline = discipline;
                     var repo = new TeamRepository();
                     repo.SaveOrUpdate(newTeam);
                     DialogResult result = MetroMessageBox.Show(this, "Team created!", "Success!", MessageBoxButtons.OK,
