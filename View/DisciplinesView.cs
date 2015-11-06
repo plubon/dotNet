@@ -83,11 +83,6 @@ namespace View
 
         }
 
-        private void metroButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void addDiscipline_Click(object sender, EventArgs e)
         {
             DisciplineCreate createForm = new DisciplineCreate(this);
@@ -107,7 +102,7 @@ namespace View
         private void removeMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MetroMessageBox.Show(this, "Are you sure you want to remove element?","Remove",MessageBoxButtons.YesNo,
-                   MessageBoxIcon.Warning);
+                   MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 var repo = new DisciplineRepository();
@@ -128,6 +123,12 @@ namespace View
         {
             var view = new DisciplineUpdate(handle);
             view.Show();
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            disciplinesPanel.Controls.Clear();
+            getData();
         }
     }
 }

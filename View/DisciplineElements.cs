@@ -27,5 +27,22 @@ namespace View
             var view = new LeaguesView(discipline);
             view.Show();
         }
+
+        private void metroTile2_Click(object sender, EventArgs e)
+        {
+            var view = new TeamsView();
+            view.Show();
+        }
+
+        private void metroTile3_Click(object sender, EventArgs e)
+        {
+            var view = new PlayersView();
+            view.Show();
+        }
+
+        private void metroTile4_Click(object sender, EventArgs e)
+        {
+            var view = new MatchesView();
+        }
     }
 }

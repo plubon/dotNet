@@ -55,6 +55,7 @@
             this.metroTile2.TabIndex = 1;
             this.metroTile2.Text = "Teams";
             this.metroTile2.UseSelectable = true;
+            this.metroTile2.Click += new System.EventHandler(this.metroTile2_Click);
             // 
             // metroTile3
             // 
@@ -65,6 +66,7 @@
             this.metroTile3.TabIndex = 2;
             this.metroTile3.Text = "Players";
             this.metroTile3.UseSelectable = true;
+            this.metroTile3.Click += new System.EventHandler(this.metroTile3_Click);
             // 
             // metroTile4
             // 
@@ -75,6 +77,7 @@
             this.metroTile4.TabIndex = 3;
             this.metroTile4.Text = "Matches";
             this.metroTile4.UseSelectable = true;
+            this.metroTile4.Click += new System.EventHandler(this.metroTile4_Click);
             // 
             // DisciplineElements
             // 
@@ -85,6 +88,7 @@
             this.Controls.Add(this.metroTile3);
             this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.metroTile1);
+            this.MaximizeBox = false;
             this.Name = "DisciplineElements";
             this.Resizable = false;
             this.Text = "DisciplineElements";

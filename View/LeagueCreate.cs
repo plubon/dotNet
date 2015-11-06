@@ -62,5 +62,10 @@ namespace View
                 System.Console.Write(discipline.Name);
             }
         }
+
+        private void dismissButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

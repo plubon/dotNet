@@ -43,16 +43,15 @@ namespace View
         {
             if (validate())
             {
-                Discipline newDiscipline = new Discipline();
-                newDiscipline.Description = descriptionInput.Text;
-                newDiscipline.Name = nameInput.Text;
+                
+                discipline.Description = descriptionInput.Text;
+                discipline.Name = nameInput.Text;
                 var repo = new DisciplineRepository();
-                repo.SaveOrUpdate(newDiscipline);
-                DialogResult result = MetroMessageBox.Show(this, "Discipline created!", "Success!", MessageBoxButtons.OK,
+                repo.SaveOrUpdate(discipline);
+                DialogResult result = MetroMessageBox.Show(this, "Discipline updated!", "Success!", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 if (result == DialogResult.OK)
                 {
-                   
                     Close();
                 }
             }
@@ -61,6 +60,11 @@ namespace View
                 MetroMessageBox.Show(this, "Sorry, data is not valid.", "Validation error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void dismissButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

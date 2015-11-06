@@ -11,5 +11,10 @@ namespace Model.Enitites
         public virtual string Description { get; set; }
         public virtual IList<League> Leagues { get; set; }
         public virtual IList<Team> Teams { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

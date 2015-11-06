@@ -1,6 +1,6 @@
 ﻿namespace View
 {
-    partial class DisciplineShow
+    partial class MatchesView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,38 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.description = new MetroFramework.Drawing.Html.HtmlLabel();
             this.SuspendLayout();
             // 
-            // description
-            // 
-            this.description.AutoScroll = true;
-            this.description.AutoScrollMinSize = new System.Drawing.Size(89, 29);
-            this.description.AutoSize = false;
-            this.description.BackColor = System.Drawing.SystemColors.Window;
-            this.description.Location = new System.Drawing.Point(23, 116);
-            this.description.Name = "description";
-            this.description.Size = new System.Drawing.Size(771, 428);
-            this.description.TabIndex = 0;
-            this.description.Text = "htmlLabel1";
-            // 
-            // DisciplineShow
+            // MatchesView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(809, 558);
-            this.Controls.Add(this.description);
-            this.MinimizeBox = false;
-            this.Name = "DisciplineShow";
-            this.Resizable = false;
-            this.Text = "DisciplineShow";
-            this.Load += new System.EventHandler(this.DisciplineShow_Load);
+            this.ClientSize = new System.Drawing.Size(278, 244);
+            this.Name = "MatchesView";
+            this.Text = "MatchesView";
+            this.Load += new System.EventHandler(this.MatchesView_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private MetroFramework.Drawing.Html.HtmlLabel description;
     }
 }

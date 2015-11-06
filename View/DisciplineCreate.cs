@@ -44,9 +44,7 @@ namespace View
                     MessageBoxIcon.Information);
                 if (result == DialogResult.OK)
                 {
-                    parent.addDisciplineItem(newDiscipline);
-                    parent.BringToFront();
-                    Close();
+                    
                 }
             }
             else
@@ -59,6 +57,11 @@ namespace View
         private void htmlLabel1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dismissButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -44,6 +44,7 @@
             this.dismissButton.TabIndex = 4;
             this.dismissButton.Text = "Dismiss";
             this.dismissButton.UseSelectable = true;
+            this.dismissButton.Click += new System.EventHandler(this.dismissButton_Click);
             // 
             // saveButton
             // 
@@ -103,6 +104,7 @@
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.descriptionLabel);
             this.Controls.Add(this.saveButton);
+            this.MinimizeBox = false;
             this.Name = "DisciplineUpdate";
             this.Text = "DisciplineUpdate";
             this.Load += new System.EventHandler(this.DisciplineUpdate_Load);

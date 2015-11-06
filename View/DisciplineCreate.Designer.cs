@@ -31,10 +31,10 @@
             this.saveButton = new MetroFramework.Controls.MetroButton();
             this.dismissButton = new MetroFramework.Controls.MetroButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.nameInput = new System.Windows.Forms.TextBox();
-            this.descriptionInput = new System.Windows.Forms.RichTextBox();
-            this.nameLabel = new System.Windows.Forms.Label();
             this.descriptionLabel = new System.Windows.Forms.Label();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.descriptionInput = new System.Windows.Forms.RichTextBox();
+            this.nameInput = new System.Windows.Forms.TextBox();
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +56,7 @@
             this.dismissButton.TabIndex = 1;
             this.dismissButton.Text = "Dismiss";
             this.dismissButton.UseSelectable = true;
+            this.dismissButton.Click += new System.EventHandler(this.dismissButton_Click);
             // 
             // metroPanel1
             // 
@@ -75,20 +76,16 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
-            // nameInput
+            // descriptionLabel
             // 
-            this.nameInput.Location = new System.Drawing.Point(200, 58);
-            this.nameInput.Name = "nameInput";
-            this.nameInput.Size = new System.Drawing.Size(505, 26);
-            this.nameInput.TabIndex = 3;
-            // 
-            // descriptionInput
-            // 
-            this.descriptionInput.Location = new System.Drawing.Point(200, 114);
-            this.descriptionInput.Name = "descriptionInput";
-            this.descriptionInput.Size = new System.Drawing.Size(505, 437);
-            this.descriptionInput.TabIndex = 4;
-            this.descriptionInput.Text = "";
+            this.descriptionLabel.AutoSize = true;
+            this.descriptionLabel.BackColor = System.Drawing.Color.Transparent;
+            this.descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionLabel.Location = new System.Drawing.Point(31, 114);
+            this.descriptionLabel.Name = "descriptionLabel";
+            this.descriptionLabel.Size = new System.Drawing.Size(141, 29);
+            this.descriptionLabel.TabIndex = 6;
+            this.descriptionLabel.Text = "Description:";
             // 
             // nameLabel
             // 
@@ -101,18 +98,22 @@
             this.nameLabel.TabIndex = 5;
             this.nameLabel.Text = "Name:";
             // 
-            // descriptionLabel
+            // descriptionInput
             // 
-            this.descriptionLabel.AutoSize = true;
-            this.descriptionLabel.BackColor = System.Drawing.Color.Transparent;
-            this.descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptionLabel.Location = new System.Drawing.Point(31, 114);
-            this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(141, 29);
-            this.descriptionLabel.TabIndex = 6;
-            this.descriptionLabel.Text = "Description:";
+            this.descriptionInput.Location = new System.Drawing.Point(200, 114);
+            this.descriptionInput.Name = "descriptionInput";
+            this.descriptionInput.Size = new System.Drawing.Size(505, 437);
+            this.descriptionInput.TabIndex = 4;
+            this.descriptionInput.Text = "";
             // 
-            // CreateDiscipline
+            // nameInput
+            // 
+            this.nameInput.Location = new System.Drawing.Point(200, 58);
+            this.nameInput.Name = "nameInput";
+            this.nameInput.Size = new System.Drawing.Size(505, 26);
+            this.nameInput.TabIndex = 3;
+            // 
+            // DisciplineCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -120,7 +121,8 @@
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.dismissButton);
             this.Controls.Add(this.saveButton);
-            this.Name = "CreateDiscipline";
+            this.MaximizeBox = false;
+            this.Name = "DisciplineCreate";
             this.Text = "Create Sport Discipline";
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();

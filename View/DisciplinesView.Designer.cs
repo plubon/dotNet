@@ -39,6 +39,7 @@
             this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
             this.metroToolTip = new MetroFramework.Components.MetroToolTip();
             this.addDiscipline = new MetroFramework.Controls.MetroTile();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroContextMenu1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             this.SuspendLayout();
@@ -123,14 +124,26 @@
             this.addDiscipline.UseSelectable = true;
             this.addDiscipline.Click += new System.EventHandler(this.addDiscipline_Click);
             // 
+            // metroButton1
+            // 
+            this.metroButton1.Location = new System.Drawing.Point(10, 156);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(158, 48);
+            this.metroButton1.TabIndex = 4;
+            this.metroButton1.Text = "Refresh Data";
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            // 
             // DisciplinesView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1168, 730);
+            this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.disciplinesPanel);
             this.Controls.Add(this.addDiscipline);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
             this.Name = "DisciplinesView";
             this.Padding = new System.Windows.Forms.Padding(30, 92, 30, 31);
             this.Resizable = false;
@@ -155,5 +168,6 @@
         private System.Windows.Forms.ToolStripMenuItem editMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeMenuItem;
         private System.Windows.Forms.ToolStripMenuItem informationMenuItem;
+        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }

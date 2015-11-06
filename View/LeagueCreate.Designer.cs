@@ -79,6 +79,7 @@
             this.dismissButton.TabIndex = 5;
             this.dismissButton.Text = "Dismiss";
             this.dismissButton.UseSelectable = true;
+            this.dismissButton.Click += new System.EventHandler(this.dismissButton_Click);
             // 
             // saveButton
             // 
@@ -101,6 +102,7 @@
             this.Controls.Add(this.descriptionInput);
             this.Controls.Add(this.nameInput);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "LeagueCreate";
             this.Resizable = false;
             this.Text = "Create New League";

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    class TeamRepository : NamedModelRepository<Team>
+    public class TeamRepository : NamedModelRepository<Team>
     {
         public IList<Team> GetTeamsOfPlayer(Player p)
         {

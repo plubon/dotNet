@@ -107,14 +107,48 @@
     <Compile Include="LeaguesView.Designer.cs">
       <DependentUpon>LeaguesView.cs</DependentUpon>
     </Compile>
+    <Compile Include="LeagueUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeagueUpdate.Designer.cs">
+      <DependentUpon>LeagueUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MatchesView.cs" />
+    <Compile Include="MatchesView.Designer.cs">
+      <DependentUpon>MatchesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlayerCreate.Designer.cs">
+      <DependentUpon>PlayerCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayersView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlayersView.Designer.cs">
+      <DependentUpon>PlayersView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TeamCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeamCreate.Designer.cs">
+      <DependentUpon>TeamCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TeamsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeamsView.Designer.cs">
+      <DependentUpon>TeamsView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DisciplineCreate.resx">
       <DependentUpon>DisciplineCreate.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,8 +170,20 @@
     <EmbeddedResource Include="LeaguesView.resx">
       <DependentUpon>LeaguesView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LeagueUpdate.resx">
+      <DependentUpon>LeagueUpdate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MatchesView.resx">
+      <DependentUpon>MatchesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlayerCreate.resx">
+      <DependentUpon>PlayerCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlayersView.resx">
+      <DependentUpon>PlayersView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -148,6 +194,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TeamCreate.resx">
+      <DependentUpon>TeamCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeamsView.resx">
+      <DependentUpon>TeamsView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
