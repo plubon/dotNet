@@ -15,9 +15,20 @@ namespace WebAPI.Controllers
         readonly DisciplineRepository _repository = new DisciplineRepository();
 
         [Route("")]
-        public IEnumerable<Discipline> GetAllLeagues()
+        public IEnumerable<Discipline> GetAllDisciplines()
         {
             return _repository.GetAll();
+        }
+
+        [Route("{id:int}")]
+        public IHttpActionResult GetDiscipline(int id)
+        {
+            var discipline = _repository.GetById(id);
+            if (discipline == null)
+            {
+                return NotFound();
+            }
+            return Ok(discipline);
         }
     }
 }

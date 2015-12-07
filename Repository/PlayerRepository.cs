@@ -15,6 +15,14 @@ namespace Repository
             CloseSession();
             return temp;
         }
+        public IList<Player> GetPlayersOfTeam(int id)
+        {
+            var team_repo = new TeamRepository();
+            var team = team_repo.GetById(id);
+            var temp = QueryOverModel().Where(x => x.Teams.Contains(team)).List();
+            CloseSession();
+            return temp;
+        }
 
         public IList<Player> GetTeamsOfPlayer(int id)
         {
