@@ -30,7 +30,9 @@ namespace Model
 
         private static ISessionFactory GetSessionFactory()
         {
-            return Fluently.Configure()
+            try
+            {
+                return Fluently.Configure()
                     .Database(
                       MySQLConfiguration.Standard.ConnectionString(c => c
                         .Server("23133.m.tld.pl")
@@ -40,8 +42,15 @@ namespace Model
                     ))
                     .Mappings(m =>
                       m.FluentMappings.AddFromAssemblyOf<HibernateConfiguration>().Conventions.Add(DefaultLazy.Never()))
-                      //.ExposeConfiguration(cfg => BuildSchema(cfg) )
+                    //.ExposeConfiguration(cfg => BuildSchema(cfg) )
                     .BuildSessionFactory();
+            }
+            catch (Exception exception)
+            {
+                
+                throw exception.InnerException;
+            }
+            
         }
 
         private static void BuildSchema(Configuration config)
