@@ -13,29 +13,13 @@ namespace UnitTests
         public void TestKeys()
         {
             DisciplineRepository d = new DisciplineRepository();
-            var a = new Discipline();
-            a.Name = "test";
-            a.Description = "test";
-            d.SaveOrUpdate(a);
-            LeagueRepository l = new LeagueRepository();
-            var x = new League();
-            x.Name = "test league";
-            x.Description = "test";
-            x.Discipline = a;
-            l.SaveOrUpdate(x);
-            d.Delete(a);
+            d.Delete(d.GetFromTop(1)[0]);
             Assert.IsTrue(true);
         }
 
         [TestMethod]
         public void TestDbAccess()
         {
-
-            DisciplineRepository d = new DisciplineRepository();
-            var a = new Discipline();
-            a.Name = "test";
-            a.Description = "test";
-            d.SaveOrUpdate(a);
             using (var session = HibernateConfiguration.GetSession())
             {
                 var result = session.QueryOver<Discipline>().List();
@@ -43,12 +27,16 @@ namespace UnitTests
             }
         }
 
+
         [TestMethod]
-        public void TestAbstractRepo()
+        public void GetByDate()
         {
-            var repo = new DisciplineRepository();
-            var d=repo.GetById(1);
-            Assert.IsNotNull(d);
+            var repo = new MatchRepository();
+            DateTime start = new DateTime(1990,1,1);
+            DateTime end = new DateTime(2020, 1, 1);
+
+            var r = repo.GetFromTimeInterval(start,end);
+            Assert.AreEqual(1, 1);
         }
 
         [TestMethod]

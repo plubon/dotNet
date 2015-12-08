@@ -32,7 +32,7 @@ namespace Repository
 
         public IList<Match> GetFromTimeInterval(DateTime start, DateTime end)
         {
-            var temp = QueryOverModel().Where(x => x.Date.CompareTo(start) > 0).Where(x => x.Date.CompareTo(end) <0).List(); //TODO we've got to fix this, it's not working at all
+            var temp = QueryOverModel().Where(x => x.Date>=start && x.Date<=end).List(); //TODO we've got to fix this, it's not working at all
             _session.Close();
             return temp;
         }
