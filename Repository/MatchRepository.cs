@@ -11,7 +11,7 @@ namespace Repository
     {
         public IList<Match> GetAllMatchesOfTeam(Team t)
         {
-            var temp = QueryOverModel().Where(x => x.HomeTeam.Id == t.Id | x.AwayTeam.Id == t.Id).List();
+            var temp = QueryOverModel().Where(x => x.HomeTeam.Id == t.Id | x.AwayTeam.Id == t.Id).List(); //TODO can't call it from API, binary OR error 
             _session.Close();
             return temp;
         }

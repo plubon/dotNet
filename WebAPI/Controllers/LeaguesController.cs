@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Model.Enitites;
 using Repository;
+using WebAPI.Models;
 
 
 namespace WebAPI.Controllers
@@ -17,7 +18,8 @@ namespace WebAPI.Controllers
         [Route("")]
         public IEnumerable<League> GetAllLeagues()
         {
-            return _repository.GetAll();
+            var queryResult = _repository.GetAll();
+            return queryResult.Select(o => new APILeague(o)).ToList();
         }
         [Route("{id:int}")]
         public IHttpActionResult GetLeague(int id)
@@ -27,14 +29,20 @@ namespace WebAPI.Controllers
             {
                 return NotFound();
             }
-            return Ok(league);
+            var result = new APILeague(league);
+            return Ok(result);
         }
-        [Route("{discipline}")]
-        public IEnumerable<League> GetLeaguesByDiscipline(string discipline)
+        [Route("discipline/{id:int}")]
+        public IEnumerable<League> GetLeaguesByDiscipline(int id)
         {
             DisciplineRepository _rep = new DisciplineRepository();
-            Discipline _discipline = _rep.GetByName(discipline);
-            return _repository.GetByDiscipline(_discipline);
+            Discipline _discipline = _rep.GetById(id);
+            if (_discipline!=null)
+            {
+                var qresult = _repository.GetByDiscipline(_discipline);
+                return qresult.Select(o => new APILeague(o)).ToList();
+            }
+            return null;
         } 
     }
 }

@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Model.Enitites;
 using Repository;
+using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
@@ -16,12 +17,14 @@ namespace WebAPI.Controllers
         [Route("")]
         public IEnumerable<Match> GetAllMatches()
         {
-            return _repository.GetAll();
+            var qres = _repository.GetAll();
+            return qres.Select(o => new APIMatch(o)).ToList();
         }
         [Route("from/{from:datetime}/to/{to:datetime}")]
         public IEnumerable<Match> GetFromInterval(DateTime from, DateTime to)
         {
-            return _repository.GetFromTimeInterval(from, to);
+            var qres =  _repository.GetFromTimeInterval(from, to);
+            return qres.Select(o => new APIMatch(o)).ToList();
         }
         [Route("{id:int}")]
         public IHttpActionResult GetMatch(int id)
@@ -31,16 +34,16 @@ namespace WebAPI.Controllers
             {
                 return NotFound();
             }
-            return Ok(match);
+
+            return Ok(new APIMatch(match));
         }
         [Route("team/{id}")]
         public IEnumerable<Match> GetMatchesOfTeam(int id)
         {
-            return _repository.GetAllMatchesOfTeam(id);
+            TeamRepository tmp = new TeamRepository();
+            var team = tmp.GetById(id);
+            var qres = _repository.GetAllMatchesOfTeam(team);
+            return qres.Select(o => new APIMatch(o)).ToList();
         }
-
-        
-            
-        
     }
 }
