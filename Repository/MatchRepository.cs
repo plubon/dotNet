@@ -11,21 +11,21 @@ namespace Repository
     {
         public IList<Match> GetAllMatchesOfTeam(Team t)
         {
-            var temp = QueryOverModel().Where(x => x.HomeTeam.Id == t.Id | x.AwayTeam.Id == t.Id).List(); //TODO can't call it from API, binary OR error 
+            var temp = QueryOverModel().Where(x => x.HomeTeam.Id == t.Id || x.AwayTeam.Id == t.Id).List(); //TODO can't call it from API, binary OR error 
             _session.Close();
             return temp;
         }
 
         public IList<Match> GetAllMatchesOfTeam(int id)
         {
-            var temp = QueryOverModel().Where(x => x.HomeTeam.Id == id | x.AwayTeam.Id == id).List();
+            var temp = QueryOverModel().Where(x => x.HomeTeam.Id == id || x.AwayTeam.Id == id).List();
             _session.Close();
             return temp;
         }
 
         public IList<Match> GetAllMatchesOfTeam(string name)
         {
-            var temp = QueryOverModel().Where(x => x.HomeTeam.Name == name | x.AwayTeam.Name == name).List();
+            var temp = QueryOverModel().Where(x => x.HomeTeam.Name == name || x.AwayTeam.Name == name).List();
             _session.Close();
             return temp;
         }
