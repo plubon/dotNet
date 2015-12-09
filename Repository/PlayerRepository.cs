@@ -11,7 +11,7 @@ namespace Repository
     {
         public IList<Player> GetPlayersOfTeam(Team t)
         {
-            var temp = QueryOverModel().Where(x => x.Teams.Contains(t)).List();
+            var temp = QueryOverModel().Where(x => x.Teams == t).List();
             CloseSession();
             return temp;
         }
@@ -19,23 +19,10 @@ namespace Repository
         {
             var team_repo = new TeamRepository();
             var team = team_repo.GetById(id);
-            var temp = QueryOverModel().Where(x => x.Teams.Contains(team)).List();
+            var temp = QueryOverModel().Where(x => x.Teams.Id == id).List();
             CloseSession();
             return temp;
         }
 
-        public IList<Player> GetTeamsOfPlayer(int id)
-        {
-            var temp = QueryOverModel().Where(x => x.Teams.All(r => r.Id == id)).List();
-            CloseSession();
-            return temp;
-        }
-
-        public IList<Player> GetTeamsOfPlayer(string name)
-        {
-            var temp = QueryOverModel().Where(x => x.Teams.All(r => r.Name == name)).List();
-            CloseSession();
-            return temp;
-        }
     }
 }
