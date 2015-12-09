@@ -14,9 +14,7 @@ namespace Model.Mappings
         {
             Id(x => x.Id);
             Map(x => x.Name).Unique();
-            HasManyToMany(x => x.Players)
-                .Cascade.All()
-                .Table("Players_Teams");
+            HasMany(x => x.Players);
             HasMany(x => x.HomeMatches);
             HasMany(x => x.AwayMatches);
             References(x => x.Discipline);

@@ -15,9 +15,7 @@ namespace Model.Mappings
             Id(x => x.Id);
             Map(x => x.Name).Unique();
             Map(x => x.Nationality);
-            HasManyToMany(x => x.Teams)
-                .Cascade.All()
-                .Table("Players_Teams");
+            References(x => x.Teams).Nullable()
         }
     }
 }
