@@ -22,10 +22,7 @@ namespace View
             Text = handle.Name;
             nameLabel.Text = handle.Name;
             nationalityLabel.Text = handle.Nationality;
-            foreach (Team team in handle.Teams)
-            {
-                teamsLabel.Text += team.Name+" ; ";
-            }
+            teamsLabel.Text += handle.Teams.Name+" ; ";
         }
 
         private void PlayerShow_Load(object sender, EventArgs e)

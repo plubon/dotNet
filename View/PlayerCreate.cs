@@ -61,9 +61,9 @@ namespace View
 
                     Player newPlayer = new Player();
                     newPlayer.Nationality = nationalityInput.Text;
-                    if (newPlayer.Teams == null) newPlayer.Teams = new List<Team>();
+                    //if (newPlayer.Teams == null) newPlayer.Teams = new List<Team>();
                     Team selectedTeam = (Team) teamsCombo.SelectedItem;
-                    newPlayer.Teams.Add(selectedTeam);
+                    newPlayer.Teams=(selectedTeam);
                    // selectedTeam.Players.Add(newPlayer);
                    // teamRepository.SaveOrUpdate(selectedTeam);
 
@@ -80,13 +80,13 @@ namespace View
                 }
                 else
                 {
-                    Team originalTeam = handler.Teams.First();
+                    Team originalTeam = handler.Teams;
                     originalTeam.Players.Remove(handler);
                     teamRepository.SaveOrUpdate(originalTeam);
                     handler.Nationality = nationalityInput.Text;
-                    handler.Teams.Clear();
+                    handler.Teams = null;
                     Team selectedTeam = (Team)teamsCombo.SelectedItem;
-                    handler.Teams.Add(selectedTeam);
+                    handler.Teams = selectedTeam;
 //                    selectedTeam.Players.Add(handler);
                     teamRepository.SaveOrUpdate(selectedTeam);
 //                    repo.SaveOrUpdate(handler);
