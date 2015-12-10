@@ -6,17 +6,19 @@ using System.Net.Http;
 using System.Web.Http;
 using Model.Enitites;
 using Repository;
+using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
     [RoutePrefix("api/teams")]
     public class TeamsController : ApiController
     {
-        TeamRepository _repository = new TeamRepository();
+        readonly TeamRepository _repository = new TeamRepository();
         [Route("")]
         public IEnumerable<Team> GetTeams()
         {
-            return _repository.GetAll();
+            var queryResult = _repository.GetAll();
+            return queryResult.Select(o => new APITeam(o)).ToList();
         }
         [Route("{id:int}")]
         public IHttpActionResult GetTeam(int id)
@@ -26,7 +28,8 @@ namespace WebAPI.Controllers
             {
                 return NotFound();
             }
-            return Ok(team);
+            var result = new APITeam(team);
+            return Ok(result);
         }
     }
 }

@@ -92,6 +92,8 @@
     </Compile>
     <Compile Include="Models\APILeague.cs" />
     <Compile Include="Models\APIMatch.cs" />
+    <Compile Include="Models\APIPlayer.cs" />
+    <Compile Include="Models\APITeam.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -22,6 +22,7 @@ namespace WebAPI
                 defaults: new { id = RouteParameter.Optional }
             );
             config.Formatters.JsonFormatter.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+
         }
     }
 }

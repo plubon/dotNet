@@ -16,7 +16,7 @@ namespace WebAPI.Models
             this.Description = league.Description;
             this.Id = league.Id;
             this.Matches = league.Matches;
-            this.Discipline = league.Discipline != null && league.Discipline.Id>0?league.Discipline.Id:-1;
+            this.Discipline = league.Discipline != null && league.Discipline.Id>0?league.Discipline.Id:7;
             
         }
     }
