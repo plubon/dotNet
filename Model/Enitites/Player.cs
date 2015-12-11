@@ -8,5 +8,7 @@ namespace Model.Enitites
         public virtual string Nationality { get; set; }
         [JsonIgnore]
         public virtual Team Teams { get; set; }
+        [JsonIgnore]
+        public virtual int ApiId { get; protected set; }
     }
 }

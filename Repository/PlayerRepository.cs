@@ -12,7 +12,7 @@ namespace Repository
         public IList<Player> GetPlayersOfTeam(Team t)
         {
             var temp = QueryOverModel().Where(x => x.Teams == t).List();
-            CloseSession();
+            //CloseSession();
             return temp;
         }
         public IList<Player> GetPlayersOfTeam(int id)
@@ -20,7 +20,7 @@ namespace Repository
             var team_repo = new TeamRepository();
             var team = team_repo.GetById(id);
             var temp = QueryOverModel().Where(x => x.Teams.Id == id).List();
-            CloseSession();
+            //CloseSession();
             return temp;
         }
 

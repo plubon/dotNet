@@ -13,7 +13,10 @@ namespace Model.Enitites
         public virtual IList<Match> AwayMatches { get; set; }
         [JsonIgnore]
         public virtual Discipline Discipline { get; set; }
+        [JsonIgnore]
+        public virtual int? ApiId { get; set; }
+        public virtual string LogoURI { get; set; }
 
-   
+
     }
 }

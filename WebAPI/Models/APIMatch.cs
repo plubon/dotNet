@@ -18,7 +18,7 @@ namespace WebAPI.Models
             if (match.HomeTeam != null) this.HomeTeam = match.HomeTeam.Id;
             if (match.AwayTeam != null) this.AwayTeam = match.AwayTeam.Id;
             this.HomeTeamScore = match.HomeTeamScore;
-            this.AwayTeam = match.AwayTeamScore;
+            this.AwayTeam = match.AwayTeamScore.Value;
             if (match.League != null) this.League = match.League.Id;
 
         }

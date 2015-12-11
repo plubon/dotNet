@@ -19,6 +19,7 @@ namespace Model.Mappings
             References(x => x.HomeTeam).Nullable();
             References(x => x.AwayTeam).Nullable();
             References(x => x.League).Cascade.Delete();
+            Map(x => x.ApiId).Nullable();
         }
     }
 }

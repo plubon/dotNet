@@ -16,13 +16,22 @@ namespace Repository
 
         protected void OpenSession()
         {
-            _session = HibernateConfiguration.GetSession();
+            if(_session==null)
+                _session=HibernateConfiguration.GetSession();
+            else if (!_session.IsOpen)
+                _session = HibernateConfiguration.GetSession();
         }
 
-       public IList<ModelClass> GetAll()
+        public ITransaction OpenTranscation()
+        {
+            OpenSession();
+            return _session.BeginTransaction();
+        }
+
+       public virtual IList<ModelClass> GetAll()
         {
             var temp = QueryOverModel().List();
-            CloseSession();
+            //CloseSession();
             return temp;
         }
 
@@ -41,14 +50,14 @@ namespace Repository
         public IList<ModelClass> GetFromTop(int number, int skip=0)
         {
             var temp=QueryOverModel().Skip(skip).Take(number).List();
-            _session.Close();
+            //_session.Close();
             return temp;
         }
 
-        public ModelClass GetById(int id)
+        public virtual ModelClass GetById(int id)
         {
-            var temp = QueryOverModel().Where(x => x.Id == id).SingleOrDefault();
-            _session.Close();
+            var temp = QueryOverModel().Where(x => x.Id == id).Take(1).SingleOrDefault();
+            //_session.Close();
             return temp;
         }
 
@@ -58,9 +67,9 @@ namespace Repository
             
             {
                 _session.SaveOrUpdate(entity);
-                _session.Flush();
+                //_session.Flush();
             }
-            _session.Close();
+            //_session.Close();
         }
 
         public void Delete(ModelClass entity)
@@ -69,9 +78,14 @@ namespace Repository
             //using (ITransaction transaction = _session.BeginTransaction())
             {
                 _session.Delete(entity);
-                _session.Flush();
+                //_session.Flush();
             }
-            _session.Close();
+            //_session.Close();
+        }
+
+        public bool ContainsId(int id)
+        {
+            return QueryOverModel().Where(x => x.Id == id).RowCount() > 0;
         }
     }
 }

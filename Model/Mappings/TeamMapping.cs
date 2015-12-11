@@ -18,6 +18,8 @@ namespace Model.Mappings
             HasMany(x => x.HomeMatches);
             HasMany(x => x.AwayMatches);
             References(x => x.Discipline);
+            Map(x => x.ApiId).Nullable();
+            Map(x => x.LogoURI).Nullable();
         }
     }
 }

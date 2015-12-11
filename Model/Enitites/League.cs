@@ -11,6 +11,8 @@ namespace Model.Enitites
         public virtual IList<Match> Matches { get; set; }
         [JsonIgnore]
         public virtual Discipline Discipline { get; set; }
+        [JsonIgnore]
+        public virtual int? ApiId { get; set; }
 
         public override string ToString()
         {

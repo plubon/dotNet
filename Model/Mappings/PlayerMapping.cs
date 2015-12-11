@@ -16,6 +16,7 @@ namespace Model.Mappings
             Map(x => x.Name).Unique();
             Map(x => x.Nationality);
             References(x => x.Teams).Nullable();
+            Map(x => x.ApiId).Nullable();
         }
     }
 }

@@ -56,8 +56,8 @@ namespace View
 
             teamHomeBox.SelectedItem = handle.HomeTeamScore;
             teamAwayBox.SelectedItem = handle.AwayTeam;
-            team1Score.Value = handle.HomeTeamScore;
-            team2Score.Value = handle.AwayTeamScore;
+            team1Score.Value = handle.HomeTeamScore.Value;
+            team2Score.Value = handle.AwayTeamScore.Value;
             matchDate.Value = handle.Date;
         }
 
