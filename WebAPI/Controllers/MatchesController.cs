@@ -37,6 +37,7 @@ namespace WebAPI.Controllers
 
             return Ok(new APIMatch(match));
         }
+        
         [Route("team/{id}")]
         public IEnumerable<Match> GetMatchesOfTeam(int id)
         {
