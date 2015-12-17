@@ -18,6 +18,7 @@ namespace Model.Mappings
             HasMany(x => x.Matches);
             References(x => x.Discipline).Cascade.Delete();
             Map(x => x.ApiId).Nullable();
+            Map(x => x.UpdatedAt).Nullable();
         }
     }
 }

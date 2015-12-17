@@ -11,24 +11,44 @@ namespace FootballDataAPI.Responses
 
     public partial class LeaguesTeamsResponse
     {
-        public class Link
+        public class Self2
         {
 
-            [JsonProperty("self")]
-            public string Self { get; set; }
-
-            [JsonProperty("soccerseason")]
-            public string Soccerseason { get; set; }
+            [JsonProperty("href")]
+            public string Href;
         }
     }
 
     public partial class LeaguesTeamsResponse
     {
-        public class Self2
+        public class Soccerseason2
         {
 
             [JsonProperty("href")]
-            public string Href { get; set; }
+            public string Href;
+        }
+    }
+
+    public partial class LeaguesTeamsResponse
+    {
+        public class Links0
+        {
+
+            [JsonProperty("self")]
+            public Self2 Self;
+
+            [JsonProperty("soccerseason")]
+            public Soccerseason2 Soccerseason;
+        }
+    }
+
+    public partial class LeaguesTeamsResponse
+    {
+        public class Self3
+        {
+
+            [JsonProperty("href")]
+            public string Href;
         }
     }
 
@@ -38,7 +58,7 @@ namespace FootballDataAPI.Responses
         {
 
             [JsonProperty("href")]
-            public string Href { get; set; }
+            public string Href;
         }
     }
 
@@ -48,7 +68,7 @@ namespace FootballDataAPI.Responses
         {
 
             [JsonProperty("href")]
-            public string Href { get; set; }
+            public string Href;
         }
     }
 
@@ -58,13 +78,13 @@ namespace FootballDataAPI.Responses
         {
 
             [JsonProperty("self")]
-            public Self2 Self { get; set; }
+            public Self3 Self;
 
             [JsonProperty("fixtures")]
-            public Fixtures2 Fixtures { get; set; }
+            public Fixtures2 Fixtures;
 
             [JsonProperty("players")]
-            public Players2 Players { get; set; }
+            public Players2 Players;
         }
     }
 
@@ -74,22 +94,22 @@ namespace FootballDataAPI.Responses
         {
 
             [JsonProperty("_links")]
-            public Links2 Links { get; set; }
+            public Links2 Links;
 
             [JsonProperty("name")]
-            public string Name { get; set; }
+            public string Name;
 
             [JsonProperty("code")]
-            public string Code { get; set; }
+            public string Code;
 
             [JsonProperty("shortName")]
-            public string ShortName { get; set; }
+            public string ShortName;
 
             [JsonProperty("squadMarketValue")]
-            public string SquadMarketValue { get; set; }
+            public string SquadMarketValue;
 
             [JsonProperty("crestUrl")]
-            public string CrestUrl { get; set; }
+            public string CrestUrl;
         }
     }
 
@@ -97,13 +117,13 @@ namespace FootballDataAPI.Responses
     {
 
         [JsonProperty("_links")]
-        public Link[] Links { get; set; }
+        public Links0 Links;
 
         [JsonProperty("count")]
-        public int Count { get; set; }
+        public int Count;
 
         [JsonProperty("teams")]
-        public Team[] Teams { get; set; }
+        public Team[] Teams;
     }
 
 }

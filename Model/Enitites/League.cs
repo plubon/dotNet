@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using System;
 
 namespace Model.Enitites
 {
-   
+
     public class League : NamedModel
     {
         public virtual string Description { get; set; }
@@ -13,6 +14,8 @@ namespace Model.Enitites
         public virtual Discipline Discipline { get; set; }
         [JsonIgnore]
         public virtual int? ApiId { get; set; }
+
+        public virtual DateTime UpdatedAt {get; set; }
 
         public override string ToString()
         {

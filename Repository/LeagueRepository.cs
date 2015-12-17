@@ -94,6 +94,7 @@ namespace Repository
             if (temp.Discipline.Name == "Football")
             {
                 UpdateLeagueFromApi(temp);
+                temp.UpdatedAt = DateTime.Now;
                 SaveOrUpdate(temp);
             }
             //_session.Close();
@@ -104,8 +105,12 @@ namespace Repository
         {
             if (lg.ApiId != null)
             {
-                GetTeamsOfLeagueFromApi(lg);
-                GetMatchesOfLeagueFromApi(lg);
+                var temp= _client.GetLeague(lg.ApiId);
+                if (DateTime.Compare(lg.UpdatedAt, temp.UpdatedAt) < 0)
+                {
+                    GetTeamsOfLeagueFromApi(lg);
+                    GetMatchesOfLeagueFromApi(lg);
+                }
             }
         }
 

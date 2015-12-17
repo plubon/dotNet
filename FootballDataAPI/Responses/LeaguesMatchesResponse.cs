@@ -11,24 +11,11 @@ namespace FootballDataAPI.Responses
 
     public partial class LeaguesMatchesResponse
     {
-        public class Link
-        {
-
-            [JsonProperty("self")]
-            public string Self { get; set; }
-
-            [JsonProperty("soccerseason")]
-            public string Soccerseason { get; set; }
-        }
-    }
-
-    public partial class LeaguesMatchesResponse
-    {
         public class Self2
         {
 
             [JsonProperty("href")]
-            public string Href { get; set; }
+            public string Href;
         }
     }
 
@@ -38,7 +25,40 @@ namespace FootballDataAPI.Responses
         {
 
             [JsonProperty("href")]
-            public string Href { get; set; }
+            public string Href;
+        }
+    }
+
+    public partial class LeaguesMatchesResponse
+    {
+        public class Links0
+        {
+
+            [JsonProperty("self")]
+            public Self2 Self;
+
+            [JsonProperty("soccerseason")]
+            public Soccerseason2 Soccerseason;
+        }
+    }
+
+    public partial class LeaguesMatchesResponse
+    {
+        public class Self3
+        {
+
+            [JsonProperty("href")]
+            public string Href;
+        }
+    }
+
+    public partial class LeaguesMatchesResponse
+    {
+        public class Soccerseason3
+        {
+
+            [JsonProperty("href")]
+            public string Href;
         }
     }
 
@@ -48,7 +68,7 @@ namespace FootballDataAPI.Responses
         {
 
             [JsonProperty("href")]
-            public string Href { get; set; }
+            public string Href;
         }
     }
 
@@ -58,7 +78,7 @@ namespace FootballDataAPI.Responses
         {
 
             [JsonProperty("href")]
-            public string Href { get; set; }
+            public string Href;
         }
     }
 
@@ -68,16 +88,16 @@ namespace FootballDataAPI.Responses
         {
 
             [JsonProperty("self")]
-            public Self2 Self { get; set; }
+            public Self3 Self;
 
             [JsonProperty("soccerseason")]
-            public Soccerseason2 Soccerseason { get; set; }
+            public Soccerseason3 Soccerseason;
 
             [JsonProperty("homeTeam")]
-            public HomeTeam2 HomeTeam { get; set; }
+            public HomeTeam2 HomeTeam;
 
             [JsonProperty("awayTeam")]
-            public AwayTeam2 AwayTeam { get; set; }
+            public AwayTeam2 AwayTeam;
         }
     }
 
@@ -87,10 +107,10 @@ namespace FootballDataAPI.Responses
         {
 
             [JsonProperty("goalsHomeTeam")]
-            public int? GoalsHomeTeam { get; set; }
+            public int? GoalsHomeTeam;
 
             [JsonProperty("goalsAwayTeam")]
-            public int? GoalsAwayTeam { get; set; }
+            public int? GoalsAwayTeam;
         }
     }
 
@@ -100,25 +120,25 @@ namespace FootballDataAPI.Responses
         {
 
             [JsonProperty("_links")]
-            public Links2 Links { get; set; }
+            public Links2 Links;
 
             [JsonProperty("date")]
-            public string Date { get; set; }
+            public string Date;
 
             [JsonProperty("status")]
-            public string Status { get; set; }
+            public string Status;
 
             [JsonProperty("matchday")]
-            public int Matchday { get; set; }
+            public int Matchday;
 
             [JsonProperty("homeTeamName")]
-            public string HomeTeamName { get; set; }
+            public string HomeTeamName;
 
             [JsonProperty("awayTeamName")]
-            public string AwayTeamName { get; set; }
+            public string AwayTeamName;
 
             [JsonProperty("result")]
-            public Result2 Result { get; set; }
+            public Result2 Result;
         }
     }
 
@@ -126,13 +146,13 @@ namespace FootballDataAPI.Responses
     {
 
         [JsonProperty("_links")]
-        public Link[] Links { get; set; }
+        public Links0 Links;
 
         [JsonProperty("count")]
-        public int Count { get; set; }
+        public int Count;
 
         [JsonProperty("fixtures")]
-        public Fixture[] Fixtures { get; set; }
+        public Fixture[] Fixtures;
     }
 
 }

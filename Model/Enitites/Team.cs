@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using System;
 
 namespace Model.Enitites
 {
@@ -16,7 +17,7 @@ namespace Model.Enitites
         [JsonIgnore]
         public virtual int? ApiId { get; set; }
         public virtual string LogoURI { get; set; }
-
+        public virtual DateTime UpdatedAt { get; set; }
 
     }
 }

@@ -20,6 +20,7 @@ namespace Model.Mappings
             References(x => x.Discipline);
             Map(x => x.ApiId).Nullable();
             Map(x => x.LogoURI).Nullable();
+            Map(x => x.UpdatedAt).Nullable();
         }
     }
 }

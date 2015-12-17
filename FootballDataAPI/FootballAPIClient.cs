@@ -28,7 +28,7 @@ namespace FootballDataAPI
 
         public IList<Match> GetMatchesForLeague(League lg)
         {
-            _request = new ApiRequest("http://api.football-data.org/v1/soccerseasons/"+lg.ApiId.ToString()+ "/fixtures?timeFrame=n7");
+            _request = new ApiRequest("http://api.football-data.org/v1/soccerseasons/"+lg.ApiId.ToString()+ "/fixtures?timeFrame=p14");
             var result = _request.GetResult<LeaguesMatchesResponse>();
             getConverter();
             return _converter.FromLeaguesMatches(result);
@@ -68,7 +68,7 @@ namespace FootballDataAPI
 
         public League GetLeague(int? id)
         {
-            _request = new ApiRequest("api.football-data.org/v1/soccerseasons/" + id.ToString() +"/");
+            _request = new ApiRequest("http://api.football-data.org/v1/soccerseasons/" + id.ToString() +"/");
             var result = _request.GetResult<LeagueResponse>();
             getConverter();
             return _converter.FromLeague(result);
