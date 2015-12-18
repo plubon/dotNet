@@ -92,13 +92,10 @@ namespace Repository
                 }
                 else
                 {
-                    if (DateTime.Compare(t.UpdatedAt, m.League.UpdatedAt) < 0)
-                    {
-                        var oldMatch = mrepo.GetMatch(m);
-                        oldMatch.AwayTeamScore = m.AwayTeamScore;
-                        oldMatch.HomeTeamScore = m.HomeTeamScore;
-                        mrepo.SaveOrUpdate(oldMatch);
-                    }
+                    var oldMatch = mrepo.GetMatch(m);
+                    oldMatch.AwayTeamScore = m.AwayTeamScore;
+                    oldMatch.HomeTeamScore = m.HomeTeamScore;
+                    mrepo.SaveOrUpdate(oldMatch);
                 }
             }
             t.UpdatedAt = DateTime.Now;
@@ -115,8 +112,8 @@ namespace Repository
                 foreach (var p in players)
                 {
                     p.Teams = t;
-                    repo.SaveOrUpdate(p);
                 }
+                SaveOrUpdate(t);
             }
         }
 
