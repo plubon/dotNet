@@ -17,6 +17,7 @@ namespace FootballDataAPI
                 x.ApiId = Int32.Parse(temp[temp.Length - 1]);
                 x.Description = apiLeague.League + apiLeague.Year;
                 x.Name = apiLeague.Caption;
+                x.UpdatedAt = new DateTime(2010,1,1);
                 ret.Add(x);
             }
             return ret;
@@ -81,6 +82,7 @@ namespace FootballDataAPI
             x.ApiId = Int32.Parse(temp[temp.Length - 1]);
             x.Description = result.League + result.Year;
             x.Name = result.Caption;
+            x.UpdatedAt = DateTime.Parse(result.LastUpdated, null, System.Globalization.DateTimeStyles.RoundtripKind);
             return x;
         }
 
@@ -107,6 +109,7 @@ namespace FootballDataAPI
                 x.ApiId = Int32.Parse(temp[temp.Length - 1]);
                 x.LogoURI = apiTeam.CrestUrl;
                 x.Name = apiTeam.Name;
+                x.UpdatedAt = new DateTime(2010,1,1);
                 ret.Add(x);
             }
             return ret;

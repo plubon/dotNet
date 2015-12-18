@@ -16,7 +16,11 @@ namespace UnitTests
         {
             using (var session = HibernateConfiguration.GetSession())
             {
-                var result = session.QueryOver<Discipline>().List();
+                var d = new Discipline();
+                var repo = new DisciplineRepository();
+                d.Name = "Football";
+                //repo.SaveOrUpdate(d);
+                var result = repo.GetAll();
                 Assert.IsTrue(result.Count > 0);
             }
         }
@@ -82,9 +86,16 @@ namespace UnitTests
         public void GetTeamById()
         {
             var repo = new TeamRepository();
-            var x = repo.GetById(38);
-            Assert.IsTrue(x.Players.Count > 0);
+            var y = repo.GetById(4);
+            Assert.IsTrue(y.Players.Count > 0);
         }
 
+        [TestMethod]
+        public void ContainsMatch()
+        {
+            var repo = new MatchRepository();
+            var x = repo.GetById(1);
+            Assert.IsTrue(repo.ContainsMatch(x));
+        }
     }
 }

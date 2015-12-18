@@ -51,6 +51,7 @@ namespace Repository
 
         private void UpdateMatchesOfTeam(Team t)
         {
+
             GetApiClient();
             var mrepo = new MatchRepository();
             var lrepo = new LeagueRepository();
@@ -59,37 +60,49 @@ namespace Repository
             {
                 if(!mrepo.ContainsMatch(m))
                 {
-                    if (m.HomeTeam.Name == t.Name)
-                    {
-                        m.HomeTeam = t;
-                        var team = getFromApiById(m.AwayTeam.ApiId);
-                        if (team.Discipline == null)
-                            team.Discipline = new DisciplineRepository().GetByName("Football");
-                        if (!ContainsName(team.Name))
-                            SaveOrUpdate(team);
-                        m.AwayTeam = team;
-                    }
-                    else
-                    {
-                        var team = getFromApiById(m.HomeTeam.ApiId);
-                        if (team.Discipline == null)
-                           team.Discipline = new DisciplineRepository().GetByName("Football");
-                        if(!ContainsName(team.Name))
-                            SaveOrUpdate(team);
-                        m.HomeTeam = team;
-                        m.AwayTeam = t;
-                    }
                     m.League = lrepo.GetByApiId(m.League.ApiId);
-                    mrepo.SaveOrUpdate(m);
+                    if (DateTime.Compare(t.UpdatedAt, m.League.UpdatedAt) <= 0)
+                    {
+                        if (m.HomeTeam.Name == t.Name)
+                        {
+                            m.HomeTeam = t;
+                            var team = getFromApiById(m.AwayTeam.ApiId);
+                            if (team.Discipline == null)
+                                team.Discipline = new DisciplineRepository().GetByName("Football");
+                            if (!ContainsName(team.Name))
+                                SaveOrUpdate(team);
+                            else
+                                team = GetByName(team.Name);
+                            m.AwayTeam = team;
+                        }
+                        else
+                        {
+                            var team = getFromApiById(m.HomeTeam.ApiId);
+                            if (team.Discipline == null)
+                                team.Discipline = new DisciplineRepository().GetByName("Football");
+                            if (!ContainsName(team.Name))
+                                SaveOrUpdate(team);
+                            else
+                                team = GetByName(team.Name);
+                            m.HomeTeam = team;
+                            m.AwayTeam = t;
+                        }
+                        mrepo.SaveOrUpdate(m);
+                    }
                 }
                 else
                 {
-                    var oldMatch = mrepo.GetMatch(m);
-                    oldMatch.AwayTeamScore = m.AwayTeamScore;
-                    oldMatch.HomeTeamScore = m.HomeTeamScore;
-                    mrepo.SaveOrUpdate(oldMatch);
+                    if (DateTime.Compare(t.UpdatedAt, m.League.UpdatedAt) < 0)
+                    {
+                        var oldMatch = mrepo.GetMatch(m);
+                        oldMatch.AwayTeamScore = m.AwayTeamScore;
+                        oldMatch.HomeTeamScore = m.HomeTeamScore;
+                        mrepo.SaveOrUpdate(oldMatch);
+                    }
                 }
             }
+            t.UpdatedAt = DateTime.Now;
+            SaveOrUpdate(t);
         }
 
         private void UpdatePlayersOfTeam(Team t)
