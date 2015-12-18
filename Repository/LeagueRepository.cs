@@ -105,6 +105,7 @@ namespace Repository
         {
             if (lg.ApiId != null)
             {
+                GetApiClient();
                 var temp= _client.GetLeague(lg.ApiId);
                 if (DateTime.Compare(lg.UpdatedAt, temp.UpdatedAt) < 0)
                 {

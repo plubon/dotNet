@@ -78,8 +78,8 @@ namespace UnitTests
         {
             var repo = new LeagueRepository();
             var result = repo.GetByDiscipline("Football");
-            int id = result[0].Id;
-            var x = repo.GetById(id);
+            int id = 1;
+            var x = repo.GetById(1);
             Assert.IsTrue(x.Matches.Count > 0);
         }
 
