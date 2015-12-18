@@ -89,6 +89,10 @@
       <Project>{fc421a25-206f-40ce-9b24-4326016b9004}</Project>
       <Name>Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebAPI\WebAPI.csproj">
+      <Project>{1623a109-6c98-4e92-bc95-6bbf20dd0903}</Project>
+      <Name>WebAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -53,7 +53,7 @@ namespace FootballDataAPI.Responses
             [JsonProperty("position")]
             public string Position { get; set; }
 
-            [JsonProperty("jerseyNumber")]
+            [JsonProperty("jerseyNumber", NullValueHandling = NullValueHandling.Ignore)]
             public int JerseyNumber { get; set; }
 
             [JsonProperty("dateOfBirth")]

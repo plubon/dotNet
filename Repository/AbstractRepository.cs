@@ -66,7 +66,13 @@ namespace Repository
             OpenSession();
             
             {
-                _session.SaveOrUpdate(entity);
+                try {
+                    _session.SaveOrUpdate(entity);
+                }
+                catch (Exception e)
+                {
+
+                }
                 //_session.Flush();
             }
             //_session.Close();

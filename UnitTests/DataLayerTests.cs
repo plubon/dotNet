@@ -5,6 +5,7 @@ using Model.Enitites;
 using Repository;
 using FootballDataAPI;
 using FootballDataAPI.Responses;
+using WebAPI.Controllers;
 
 namespace UnitTests
 {
@@ -86,7 +87,7 @@ namespace UnitTests
         public void GetTeamById()
         {
             var repo = new TeamRepository();
-            var y = repo.GetById(4);
+            var y = repo.GetById(9);
             Assert.IsTrue(y.Players.Count > 0);
         }
 
@@ -96,6 +97,14 @@ namespace UnitTests
             var repo = new MatchRepository();
             var x = repo.GetById(1);
             Assert.IsTrue(repo.ContainsMatch(x));
+        }
+
+        [TestMethod]
+        public void AllMatches()
+        {
+            var repo = new MatchRepository();
+            var x = repo.GetAll();
+            Assert.IsTrue(x.Count != 0);
         }
     }
 }
