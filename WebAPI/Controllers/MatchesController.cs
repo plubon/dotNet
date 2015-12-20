@@ -46,5 +46,14 @@ namespace WebAPI.Controllers
             var qres = _repository.GetAllMatchesOfTeam(team);
             return qres.Select(o => new APIMatch(o)).ToList();
         }
+
+        [Route("league/{id}")]
+        public IEnumerable<Match> GetMatchesOfLeague(int id)
+        {
+            LeagueRepository tmp = new LeagueRepository();
+            var league = tmp.GetById(id);
+            var qres = _repository.GetAllMatchesOfLeague(league);
+            return qres.Select(o => new APIMatch(o)).ToList();
+        } 
     }
 }
