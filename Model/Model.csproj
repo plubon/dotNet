@@ -40,6 +40,10 @@
       <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
@@ -69,17 +73,21 @@
   <ItemGroup>
     <Compile Include="Enitites\BaseModel.cs" />
     <Compile Include="Enitites\Discipline.cs" />
+    <Compile Include="Enitites\ExternalLogins.cs" />
     <Compile Include="Enitites\League.cs" />
     <Compile Include="Enitites\Match.cs" />
     <Compile Include="Enitites\NamedModel.cs" />
     <Compile Include="Enitites\Player.cs" />
     <Compile Include="Enitites\Team.cs" />
+    <Compile Include="Enitites\User.cs" />
     <Compile Include="HibernateConfiguration.cs" />
     <Compile Include="Mappings\DisciplineMapping.cs" />
+    <Compile Include="Mappings\ExternalLoginMapping.cs" />
     <Compile Include="Mappings\LeagueMapping.cs" />
     <Compile Include="Mappings\MatchMapping.cs" />
     <Compile Include="Mappings\PlayerMapping.cs" />
     <Compile Include="Mappings\TeamMapping.cs" />
+    <Compile Include="Mappings\UserMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
