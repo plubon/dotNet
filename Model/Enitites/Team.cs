@@ -17,6 +17,7 @@ namespace Model.Enitites
         [JsonIgnore]
         public virtual int? ApiId { get; set; }
         public virtual string LogoURI { get; set; }
+        [JsonIgnore]
         public virtual DateTime UpdatedAt { get; set; }
 
     }

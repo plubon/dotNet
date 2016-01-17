@@ -116,6 +116,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FootballDataAPI\FootballDataAPI.csproj">
+      <Project>{98af175b-63a4-4f72-82fb-0ca43df17737}</Project>
+      <Name>FootballDataAPI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{529c0b92-9dfd-4075-9217-0b61e1e226ef}</Project>
       <Name>Model</Name>

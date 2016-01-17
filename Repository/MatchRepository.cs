@@ -30,6 +30,8 @@ namespace Repository
             return temp;
         }
 
+
+
         public IList<Match> GetFromTimeInterval(DateTime start, DateTime end)
         {
             var temp = QueryOverModel().Where(x => x.Date>=start && x.Date<=end).List(); //TODO we've got to fix this, it's not working at all
@@ -45,6 +47,13 @@ namespace Repository
         public bool ContainsMatch(Match m)
         {
             return QueryOverModel().Where(x => x.Date == m.Date).JoinQueryOver(x => x.HomeTeam).Where(x => x.Name == m.HomeTeam.Name || x.Name == m.AwayTeam.Name).Take(1).RowCount()>0;
+        }
+
+        public IList<Match> GetAllMatchesOfLeague(League league)
+        {
+            var temp = QueryOverModel().Where(x => x.League.Id == league.Id).List(); 
+            //_session.Close();
+            return temp;
         }
 
         public Match GetMatch(Match m)

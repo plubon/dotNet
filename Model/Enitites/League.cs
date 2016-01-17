@@ -14,7 +14,7 @@ namespace Model.Enitites
         public virtual Discipline Discipline { get; set; }
         [JsonIgnore]
         public virtual int? ApiId { get; set; }
-
+        [JsonIgnore]
         public virtual DateTime UpdatedAt {get; set; }
 
         public override string ToString()

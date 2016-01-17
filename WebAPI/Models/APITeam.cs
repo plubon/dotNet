@@ -14,6 +14,7 @@ namespace WebAPI.Models
             this.Id = team.Id;
             this.Name = team.Name;
             this.Discipline = team.Discipline.Id;
+            this.LogoURI = team.LogoURI;
         }
     }
 }
