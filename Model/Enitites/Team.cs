@@ -19,6 +19,7 @@ namespace Model.Enitites
         public virtual string LogoURI { get; set; }
         [JsonIgnore]
         public virtual DateTime UpdatedAt { get; set; }
-
+        [JsonIgnore]
+        public virtual IList<User> FollowedBy { get; set; }
     }
 }

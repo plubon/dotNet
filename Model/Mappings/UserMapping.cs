@@ -16,6 +16,8 @@ namespace Model.Mappings
             Map(x => x.UserName).Unique();
             Map(x => x.PasswordHash);
             Map(x => x.SecurityStamp);
+            HasMany(x => x.Bets);
+            HasManyToMany(x => x.FollowedTeams);
         }
     }
 }

@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enitites\BaseModel.cs" />
+    <Compile Include="Enitites\Bet.cs" />
     <Compile Include="Enitites\Discipline.cs" />
     <Compile Include="Enitites\ExternalLogins.cs" />
     <Compile Include="Enitites\League.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Enitites\Team.cs" />
     <Compile Include="Enitites\User.cs" />
     <Compile Include="HibernateConfiguration.cs" />
+    <Compile Include="Mappings\BetMapping.cs" />
     <Compile Include="Mappings\DisciplineMapping.cs" />
     <Compile Include="Mappings\ExternalLoginMapping.cs" />
     <Compile Include="Mappings\LeagueMapping.cs" />

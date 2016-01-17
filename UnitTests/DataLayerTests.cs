@@ -20,7 +20,8 @@ namespace UnitTests
                 var d = new Discipline();
                 var repo = new DisciplineRepository();
                 d.Name = "Football";
-                //repo.SaveOrUpdate(d);
+                if(!repo.ContainsName(d.Name))
+                    repo.SaveOrUpdate(d);
                 var result = repo.GetAll();
                 Assert.IsTrue(result.Count > 0);
             }

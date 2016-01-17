@@ -21,6 +21,7 @@ namespace Model.Mappings
             Map(x => x.ApiId).Nullable();
             Map(x => x.LogoURI).Nullable();
             Map(x => x.UpdatedAt).Nullable();
+            HasManyToMany(x => x.FollowedBy);
         }
     }
 }

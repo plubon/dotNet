@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+
 namespace Model.Enitites
 {
     public class Match : BaseModel
@@ -12,5 +14,7 @@ namespace Model.Enitites
         [JsonIgnore]
         public virtual int ApiId { get; set; }
         public virtual League League { get; set; }
+        [JsonIgnore]
+        public virtual IList<Bet> Bets { get; set; }
     }
 }
