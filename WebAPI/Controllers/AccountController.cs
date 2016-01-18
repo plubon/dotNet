@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Repository;
 using Microsoft.AspNet.Identity;
+using System.Web;
 
 namespace WebAPI.Controllers
 {
@@ -14,11 +15,13 @@ namespace WebAPI.Controllers
     {
         [HttpPost]
         [Route("")]
-        public HttpResponseMessage Validate(string username, string password)
+        public HttpResponseMessage Validate([FromBody]dynamic value)
         {
+            var username = HttpContext.Current.Request.Form.GetValues("username").FirstOrDefault();
+            var password = HttpContext.Current.Request.Form.GetValues("password").FirstOrDefault();
             var u = new UserRepository();
             var user = u.GetByName(username);
-            if (u == null)
+            if (user == null)
                 return Request.CreateResponse(HttpStatusCode.Forbidden, "");
             if (new PasswordHasher().VerifyHashedPassword(user.PasswordHash, password)>0)
                 return Request.CreateResponse(HttpStatusCode.OK, "fzfjt9gxt3");

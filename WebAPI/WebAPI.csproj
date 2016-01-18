@@ -88,7 +88,9 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BetController.cs" />
     <Compile Include="Controllers\DisciplinesController.cs" />
+    <Compile Include="Controllers\FollowController.cs" />
     <Compile Include="Controllers\LeaguesController.cs" />
     <Compile Include="Controllers\MatchesController.cs" />
     <Compile Include="Controllers\PlayersController.cs" />

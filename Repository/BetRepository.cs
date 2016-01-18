@@ -7,8 +7,18 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    class BetRepository : AbstractRepository<Bet>
+    public class BetRepository : AbstractRepository<Bet>
     {
+        public bool ContainsBet(int mId, int uId)
+        {
+           OpenSession();
+           return QueryOverModel().Where(x => x.User.UserId == uId || x.Match.Id == mId).Take(1).RowCount()>0;  
+        }
 
+        public Bet GetByMatchAndUserIds(int mId, int uId)
+        {
+            OpenSession();
+            return QueryOverModel().Where(x => x.User.UserId == uId || x.Match.Id == mId).Take(1).SingleOrDefault();
+        }
     }
 }
