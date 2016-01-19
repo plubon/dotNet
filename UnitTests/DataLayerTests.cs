@@ -88,7 +88,7 @@ namespace UnitTests
         public void GetTeamById()
         {
             var repo = new TeamRepository();
-            var y = repo.GetById(1);
+            var y = repo.GetById(2);
             Assert.IsTrue(y.Players.Count > 0);
         }
 

@@ -114,6 +114,7 @@ namespace Repository
                     p.Teams = t;
                     if (!repo.ContainsName(p.Name))
                         repo.SaveOrUpdate(p);
+                    t.Players.Add(p);
                 }
                 SaveOrUpdate(t);
             }
