@@ -64,17 +64,13 @@ namespace Repository
         public void SaveOrUpdate(ModelClass entity)
         {
             OpenSession();
-            
+            try
             {
-                try {
                     _session.SaveOrUpdate(entity);
-                }
-                catch (Exception e)
-                {
-
-                }
                 //_session.Flush();
             }
+            catch(Exception e)
+            { }
             //_session.Close();
         }
 
