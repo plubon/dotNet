@@ -111,7 +111,7 @@ namespace Repository
                 var repo = new PlayerRepository();
                 foreach (var p in players)
                 {
-                    if (repo.ContainsName(p.Name))
+                    if (!repo.ContainsName(p.Name))
                         repo.SaveOrUpdate(p);
                     p.Teams = t;
                 }
