@@ -12,8 +12,8 @@ namespace Model.Mappings
     {
         public UserMapping()
         {
-            Id(x => x.UserId);
-            Map(x => x.UserName).Unique();
+            Id(x => x.Id);
+            Map(x => x.Name).Unique();
             Map(x => x.PasswordHash);
             Map(x => x.SecurityStamp);
             HasMany(x => x.Bets);

@@ -36,9 +36,9 @@ namespace Model
                     .Database(
                       MySQLConfiguration.Standard.ConnectionString(c => c
                         .Server("23133.m.tld.pl")
-                        .Database("baza23133_46")
-                        .Username("admin23133_46")
-                        .Password("5KgaYaf3)V")
+                        .Database("baza23133_testdotnet")
+                        .Username("admin23133_testdotnet")
+                        .Password("2GgI6VA#K2")
                     ))
                     .Mappings(m =>
                       m.FluentMappings.AddFromAssemblyOf<HibernateConfiguration>()/*.Conventions.Add(DefaultLazy.Never())*/)
