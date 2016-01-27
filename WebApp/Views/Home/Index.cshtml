@@ -20,8 +20,25 @@
     @foreach (Match item in (IList<Match>)ViewData["allMatches"])
     {
         <div class="row">
-            @item.AwayTeam<br />
-            @item.AwayTeamScore<br />
+            <a href="#">
+                <div class="col-xs-3">
+                    <img class="img-responsive team-logo" src="@item.HomeTeam.LogoURI" />
+                </div>
+                <div class="col-xs-2">
+                    @item.HomeTeam
+                </div>     
+            </a>
+            <div class="col-xs-2">
+                @item.HomeTeamScore - @item.AwayTeamScore
+            </div>
+            <a href="#">
+                <div class="col-xs-2">
+                    @item.AwayTeam
+                </div>
+                <div class="col-xs-3">
+                    <img class="img-responsive team-logo" src="@item.AwayTeam.LogoURI" />
+                </div>
+            </a>
         </div>
     }
 </div>
