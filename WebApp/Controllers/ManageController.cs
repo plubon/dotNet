@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebApp.Models;
+using Repository;
+using System.Web.Security;
 
 namespace WebApp.Controllers
 {
@@ -15,15 +17,21 @@ namespace WebApp.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private PasswordHasher passwordHasher;
+        private UserRepository userRepository;
 
         public ManageController()
         {
+            passwordHasher = new PasswordHasher();
+            userRepository = new UserRepository();
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            passwordHasher = new PasswordHasher();
+            userRepository = new UserRepository();
         }
 
         public ApplicationSignInManager SignInManager
@@ -63,14 +71,9 @@ namespace WebApp.Controllers
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
                 : "";
 
-            var userId = User.Identity.GetUserId();
+            var userId = HttpContext.User.Identity.Name;
             var model = new IndexViewModel
             {
-                HasPassword = HasPassword(),
-                PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
-                TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
-                Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
             return View(model);
         }
@@ -228,17 +231,20 @@ namespace WebApp.Controllers
             {
                 return View(model);
             }
-            var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
-            if (result.Succeeded)
+            var user = userRepository.GetByName(HttpContext.User.Identity.Name);
+            if(passwordHasher.VerifyHashedPassword(user.PasswordHash, model.OldPassword)!=PasswordVerificationResult.Failed)
             {
-                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                if (user != null)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                }
+                user.PasswordHash = passwordHasher.HashPassword(model.NewPassword);
+                userRepository.SaveOrUpdate(user);
+                FormsAuthentication.SetAuthCookie(user.Name, true);
                 return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
-            AddErrors(result);
+            string tekst="";
+            if (model.ConfirmPassword != model.NewPassword)
+                tekst = "Passwords don't match. ";
+            string[] errors = new string[1];
+            errors[0] = tekst+"Old password doesn't match";
+            AddErrors(new IdentityResult(errors));
             return View(model);
         }
 
@@ -353,21 +359,11 @@ namespace WebApp.Controllers
 
         private bool HasPassword()
         {
-            var user = UserManager.FindById(User.Identity.GetUserId());
-            if (user != null)
-            {
-                return user.PasswordHash != null;
-            }
-            return false;
+            return true;
         }
 
         private bool HasPhoneNumber()
         {
-            var user = UserManager.FindById(User.Identity.GetUserId());
-            if (user != null)
-            {
-                return user.PhoneNumber != null;
-            }
             return false;
         }
 
