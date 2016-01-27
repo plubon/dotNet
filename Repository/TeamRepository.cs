@@ -49,7 +49,7 @@ namespace Repository
             }
         }
 
-        private void UpdateMatchesOfTeam(Team t)
+        public void UpdateMatchesOfTeam(Team t)
         {
 
             GetApiClient();

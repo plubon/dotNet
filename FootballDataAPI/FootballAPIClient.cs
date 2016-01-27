@@ -44,10 +44,13 @@ namespace FootballDataAPI
 
         public IList<Match> GetMatchesForTeam(Team t)
         {
-            _request = new ApiRequest("http://api.football-data.org/v1/teams/"+t.ApiId.ToString()+"/fixtures");
+            _request = new ApiRequest("http://api.football-data.org/v1/teams/"+t.ApiId.ToString()+ "/fixtures?timeFrame=p7");
             var result = _request.GetResult<TeamsMatchesResponse>();
             getConverter();
-            return _converter.FromTeamsMatches(result);
+            var prev = _converter.FromTeamsMatches(result);
+            _request = new ApiRequest("http://api.football-data.org/v1/teams/" + t.ApiId.ToString() + "/fixtures?timeFrame=n7");
+            result = _request.GetResult<TeamsMatchesResponse>();
+            return prev.Concat(_converter.FromTeamsMatches(result)).ToList();
         }
 
         public IList<Player> GetPlayersForTeam(Team ts)

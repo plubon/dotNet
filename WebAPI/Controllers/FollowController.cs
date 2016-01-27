@@ -28,5 +28,21 @@ namespace WebAPI.Controllers
             uRepo.SaveOrUpdate(u);
             return Ok();
         }
+
+        public IHttpActionResult UnFollow()
+        {
+            var uId = Int32.Parse(HttpContext.Current.Request.Form.GetValues("userId").FirstOrDefault());
+            var tId = Int32.Parse(HttpContext.Current.Request.Form.GetValues("teamId").FirstOrDefault());
+            var uRepo = new UserRepository();
+            var tRepo = new TeamRepository();
+            if (!(uRepo.ContainsId(uId) && tRepo.ContainsId(tId)))
+                return NotFound();
+            var u = uRepo.GetById(uId);
+            var t = tRepo.GetById(tId);
+            if (u.FollowedTeams.Contains(t))
+                u.FollowedTeams.Remove(t);
+            uRepo.SaveOrUpdate(u);
+            return Ok();
+        }
     }
 }

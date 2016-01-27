@@ -30,7 +30,27 @@ namespace Repository
             return temp;
         }
 
+        public IList<Match> GetMatchesOfFollowedTeams(User u)
+        {
+           var trepo = new TeamRepository();
+           var ret = new List<Match>();
+           foreach(var t in u.FollowedTeams)
+           {
+                trepo.UpdateMatchesOfTeam(t);
+                ret = ret.Concat(GetAllMatchesOfTeam(t)).ToList();
+           }
+            return ret;
+        }
 
+        public IList<Match> GetMatchesOfFollowedTeams(int uid)
+        {
+            return GetMatchesOfFollowedTeams(new UserRepository().GetById(uid));
+        }
+
+        public IList<Match> GetMatchesOfFollowedTeams(string name)
+        {
+            return GetMatchesOfFollowedTeams(new UserRepository().GetByName(name));
+        }
 
         public IList<Match> GetFromTimeInterval(DateTime start, DateTime end)
         {
