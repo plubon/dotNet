@@ -15,7 +15,7 @@ namespace WebAPI.Controllers
     public class FollowController : ApiController
     {
         [HttpPost]
-        [Route("/follow")]
+        [Route("follow")]
         public IHttpActionResult Follow()
         {
             var uId = Int32.Parse(HttpContext.Current.Request.Form.GetValues("userId").FirstOrDefault());
@@ -30,7 +30,7 @@ namespace WebAPI.Controllers
             uRepo.SaveOrUpdate(u);
             return Ok();
         }
-        [Route("/unfollow")]
+        [Route("unfollow")]
         public IHttpActionResult UnFollow()
         {
             var uId = Int32.Parse(HttpContext.Current.Request.Form.GetValues("userId").FirstOrDefault());
