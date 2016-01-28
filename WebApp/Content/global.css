@@ -1,4 +1,7 @@
-﻿.matches-container{
+﻿.body-content {
+    padding-top: 50px;
+}
+.matches-container{
     text-align: center;
 }
 .team-logo {
@@ -19,4 +22,7 @@ input.bet-input {
 .followed {
     background-color: red;
     border: aqua;
+}
+.team-logo-row {
+    margin-bottom: 15px;
 }

@@ -7,7 +7,7 @@
 }
 <script src="~/Scripts/place_bet.js"></script>
 <h2>Upcoming Matches:</h2>
-<div class="container">
+<div class="matches-container">
     @foreach (Match item in (IEnumerable<Match>) ViewData["matches"])
     {
         <div class="row">
@@ -90,19 +90,3 @@
         }
     }
 </div>
-@if (Request.IsAuthenticated) { 
-foreach (Bet item in (IEnumerable<Bet>)ViewData["bets"])
-{
-    <div class="row" style="background-color: red; margin-right: 10px;">
-        @item.Match.Id;
-        @item.AwayTeamScore
-        @item.HomeTeamScore<br />     
-    </div>
-    <div class="row" style="background-color: red; margin-right: 10px;">
-        @item.Match.Id;
-        @item.AwayTeamScore
-        @item.HomeTeamScore<br />
-    </div>
-
-}
-}

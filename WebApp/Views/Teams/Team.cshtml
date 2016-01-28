@@ -5,7 +5,7 @@
 }
 <script type="text/javascript" src="~/Scripts/team.js"></script>
 
-<div class="row">
+<div class="row team-logo-row">
     <div class="col-xs-2">
         <img class="img-responsive" src="@team.LogoURI" />
     </div>
@@ -18,17 +18,17 @@
     <div class="row">
         @if ((bool) ViewData["followed"] == true)
         {
-            <button class="btn btn-success followed" id="follow-team" meta-uid="@ViewData["uid"]" meta-tid="@team.Id">Following! @ViewData["uid"]</button>
+            <button class="btn btn-success followed" id="follow-team" meta-uid="@ViewData["uid"]" meta-tid="@team.Id">Following!</button>
         }
         else
         {
-            <button class="btn btn-success" id="follow-team" meta-uid="@ViewData["uid"]" meta-tid="@team.Id">Follow! @ViewData["uid"]</button>
+            <button class="btn btn-success" id="follow-team" meta-uid="@ViewData["uid"]" meta-tid="@team.Id">Follow!</button>
         }
     </div>
 }
 <div class="container" id="upcomming-matches">
     <h2>Upcomming matches of team</h2>
-    <div class="container">
+    <div class="container matches-container">
         <h4>Home Matches</h4>
         @foreach (Match item in team.HomeMatches.OrderBy(o => o.Date).Reverse())
         {
@@ -59,7 +59,7 @@
             }
         }
     </div>
-    <div class="container">
+    <div class="container matches-container">
         <h4>Away Matches</h4>
         @foreach (Match item in team.AwayMatches.OrderBy(o => o.Date).Reverse())
         {
@@ -91,7 +91,7 @@
         }
     </div>
 </div>
-<div class="container" id="upcomming-matches">
+<div class="container" id="previous-matches">
     <h2>Previous matches of team</h2>
     <div class="container">
         <h4>Home Matches</h4>
@@ -102,14 +102,14 @@
                 <div class="row">
                     <a href="/teams/team/@item.HomeTeam.Id">
                         <div class="col-xs-3">
-                            <img class="img-responsive team-logo" src="@item.HomeTeam.LogoURI" />
+                            <img class="img-responsive team-logo" src="@item.HomeTeam.LogoURI"/>
                         </div>
                         <div class="col-xs-2">
                             @item.HomeTeam
                         </div>
                     </a>
                     <div class="col-xs-2">
-                        @item.HomeTeamScore - @item.AwayTeamScore <br />
+                        @item.HomeTeamScore - @item.AwayTeamScore <br/>
                         @item.Date
                     </div>
                     <a href="/teams/team/@item.AwayTeam.Id">
@@ -117,14 +117,14 @@
                             @item.AwayTeam
                         </div>
                         <div class="col-xs-3">
-                            <img class="img-responsive team-logo" src="@item.AwayTeam.LogoURI" />
+                            <img class="img-responsive team-logo" src="@item.AwayTeam.LogoURI"/>
                         </div>
                     </a>
                 </div>
             }
         }
     </div>
-   
+
     <div class="container">
         <h4>Away Matches</h4>
         @foreach (Match item in team.AwayMatches.OrderBy(o => o.Date).Reverse())
@@ -134,14 +134,14 @@
                 <div class="row">
                     <a href="/teams/team/@item.HomeTeam.Id">
                         <div class="col-xs-3">
-                            <img class="img-responsive team-logo" src="@item.HomeTeam.LogoURI" />
+                            <img class="img-responsive team-logo" src="@item.HomeTeam.LogoURI"/>
                         </div>
                         <div class="col-xs-2">
                             @item.HomeTeam
                         </div>
                     </a>
                     <div class="col-xs-2">
-                        @item.HomeTeamScore - @item.AwayTeamScore <br />
+                        @item.HomeTeamScore - @item.AwayTeamScore <br/>
                         @item.Date
                     </div>
                     <a href="/teams/team/@item.AwayTeam.Id">
@@ -149,11 +149,36 @@
                             @item.AwayTeam
                         </div>
                         <div class="col-xs-3">
-                            <img class="img-responsive team-logo" src="@item.AwayTeam.LogoURI" />
+                            <img class="img-responsive team-logo" src="@item.AwayTeam.LogoURI"/>
                         </div>
                     </a>
                 </div>
             }
         }
     </div>
+</div>
+<div class="container" id="players-container">
+    <h2>Players:</h2>
+    <div class="row">
+        <div class="col-sm-offset-2 col-xs-5">
+            <h5>Name</h5>
+        </div>
+        <div class="col-xs-5">
+            <h5>Nationality</h5>
+        </div>
+    </div>
+    @foreach (Player player in team.Players)
+    {
+        <div class="row">
+            <div class="col-xs-2">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            </div>
+            <div class="col-xs-5">
+                <h5>@player.Name</h5>
+            </div>
+            <div class="col-xs-5">
+                <h5>@player.Nationality</h5>
+            </div>
+        </div>
+    }
 </div>

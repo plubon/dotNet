@@ -7,7 +7,7 @@
 }
 
 <h2>@league.Name</h2>
-<div class="container">
+<div class="matches-container">
     <h4>Upcomming matches:</h4>
     @foreach (Match item in league.Matches.OrderBy(o => o.Date).Reverse())
     {
@@ -38,7 +38,7 @@
         }
     }
 </div>
-<div class="container">
+<div class="matches-container">
     <h4>Previous matches:</h4>
     @foreach (Match item in league.Matches.OrderBy(o=>o.Date).Reverse())
     {
