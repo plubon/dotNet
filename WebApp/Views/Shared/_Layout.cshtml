@@ -25,7 +25,9 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Leagues", "Index", "Leagues")</li>
                     <li>@Html.ActionLink("Teams", "Index", "Teams")</li>
-                    <li>@Html.ActionLink("Upcoming matches","Upcoming","Matches")</li>
+                    @if (Request.IsAuthenticated) { 
+                        <li>@Html.ActionLink("Bets","Upcoming","Matches")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

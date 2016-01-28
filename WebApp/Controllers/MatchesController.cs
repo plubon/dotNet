@@ -13,6 +13,8 @@ namespace WebApp.Controllers
         InMemoryCache cache = new InMemoryCache();
         LeagueRepository leagueRepository = new LeagueRepository();
         MatchRepository matchRepository = new MatchRepository();
+        BetRepository betRepository = new BetRepository();
+        UserRepository userRepository = new UserRepository();
         // GET: Matches
         public ActionResult Index()
         {
@@ -28,6 +30,14 @@ namespace WebApp.Controllers
         public ActionResult Upcoming()
         {
             IEnumerable<Match> allMatches = cache.GetOrSet("home.allMatches",()=>matchRepository.GetAll());
+            if (System.Web.HttpContext.Current.User != null &&
+                System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                User user = userRepository.GetByName(System.Web.HttpContext.Current.User.Identity.Name);
+
+                IEnumerable<Bet> bets = user.Bets;
+                ViewData["bets"] = bets;
+            }
             List<Match> upcomingMatches = new List<Match>();
 
             foreach (Match match in allMatches)
