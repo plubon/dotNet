@@ -15,30 +15,43 @@
         }
     </div>
 }
-<div class="container">
+<div class="container matches-container">
     <h1>Latest matches</h1>
+    <div class="row">
+        <div class="col-sm-offset-3 col-xs-2">
+            Home Team
+        </div> 
+
+        <div class="col-sm-offset-2 col-xs-2">
+            Away Team
+        </div> 
+    </div>
     @foreach (Match item in (IList<Match>)ViewData["allMatches"])
     {
-        <div class="row">
-            <a href="#">
-                <div class="col-xs-3">
-                    <img class="img-responsive team-logo" src="@item.HomeTeam.LogoURI" />
-                </div>
+        if (item.AwayTeamScore != null)
+        {
+            <div class="row">
+                <a href="/teams/team/@item.HomeTeam.Id">
+                    <div class="col-xs-3">
+                        <img class="img-responsive team-logo" src="@item.HomeTeam.LogoURI" />
+                    </div>
+                    <div class="col-xs-2">
+                        @item.HomeTeam
+                    </div>
+                </a>
                 <div class="col-xs-2">
-                    @item.HomeTeam
-                </div>     
-            </a>
-            <div class="col-xs-2">
-                @item.HomeTeamScore - @item.AwayTeamScore
+                    @item.HomeTeamScore - @item.AwayTeamScore <br />
+                    @item.Date
+                </div>
+                <a href="/teams/team/@item.AwayTeam.Id">
+                    <div class="col-xs-2">
+                        @item.AwayTeam
+                    </div>
+                    <div class="col-xs-3">
+                        <img class="img-responsive team-logo" src="@item.AwayTeam.LogoURI" />
+                    </div>
+                </a>
             </div>
-            <a href="#">
-                <div class="col-xs-2">
-                    @item.AwayTeam
-                </div>
-                <div class="col-xs-3">
-                    <img class="img-responsive team-logo" src="@item.AwayTeam.LogoURI" />
-                </div>
-            </a>
-        </div>
+        }
     }
 </div>

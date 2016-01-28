@@ -1,0 +1,18 @@
+﻿@using Model.Enitites
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Leagues:</h2>
+
+<div class="container">
+    @foreach (League item in (IEnumerable<League>) ViewData["leagues"])
+    {
+        <a class="league-row" href="/Matches/League/@item.Id">
+            <div class="row">
+                @item.Name
+            </div>
+        </a>
+    }
+</div>

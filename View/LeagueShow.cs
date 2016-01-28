@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,7 +21,7 @@ namespace View
         {
             handler = _handler;
             InitializeComponent();
-            Text = handler.Name;
+            MediaTypeNames.Text = handler.Name;
             descriptionText.Text = handler.Description;
             disciplineLabel.Text = handler.Discipline.Name;
             bindingSourceMathces.DataSource = handler.Matches;

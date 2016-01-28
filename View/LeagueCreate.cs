@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using MetroFramework;
 using MetroFramework.Forms;
 using Model.Enitites;
@@ -62,7 +63,7 @@ namespace View
 
         private void dismissButton_Click(object sender, EventArgs e)
         {
-            Close();
+            VisualStyleElement.ToolTip.Close();
         }
     }
 }

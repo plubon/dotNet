@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,7 +20,7 @@ namespace View
         {
             handler = _handler;
             InitializeComponent();
-            Text = handler.HomeTeam.Name + " against " + handler.AwayTeam.Name;
+            MediaTypeNames.Text = handler.HomeTeam.Name + " against " + handler.AwayTeam.Name;
             homeTeamLabel.Text = handler.HomeTeam.Name;
             homeTeamResultLabel.Text = handler.HomeTeamScore.ToString();
             awayTeamLabel.Text = handler.AwayTeam.Name;

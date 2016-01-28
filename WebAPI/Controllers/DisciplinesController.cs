@@ -4,11 +4,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Model.Enitites;
 using Repository;
 
 namespace WebAPI.Controllers
 {
+    [EnableCors(origins: "http://digitalathletics.azurewebsites.net", headers: "*", methods: "*")]
     [RoutePrefix("api/disciplines")]
     public class DisciplinesController : ApiController
     {

@@ -1,0 +1,30 @@
+﻿@using Model.Enitites
+
+@{
+    ViewBag.Title = "index";
+}
+
+<h2>Teams:</h2>
+
+<div class="container">
+   @foreach (Team item in (IEnumerable<Team>)ViewData["teams"])
+   {
+    <a href="/Teams/team/@item.Id" class="team-row">
+        <div class="row">
+            <div class="col-xs-3">
+                <img src="@item.LogoURI" class="img-responsive team-logo-big" />
+            </div>
+            <div class="col-xs-9">
+                <div class="row">
+                    @item.Name
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        @item.Discipline.Name
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+   }
+</div>

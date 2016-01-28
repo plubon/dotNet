@@ -16,5 +16,9 @@ namespace Model.Enitites
         public virtual League League { get; set; }
         [JsonIgnore]
         public virtual IList<Bet> Bets { get; set; }
+        public virtual int CompareTo(Match o)
+        {
+            return Date.CompareTo(o.Date);
+        }
     }
 }

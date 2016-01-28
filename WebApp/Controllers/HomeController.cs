@@ -10,15 +10,18 @@ namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
+        InMemoryCache cache = new InMemoryCache();
         public ActionResult Index()
         {
             MatchRepository _repository = new MatchRepository();
             UserRepository userRepository = new UserRepository();
             if(System.Web.HttpContext.Current.User != null && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
             {
-                ViewData["followedMatches"] = _repository.GetMatchesOfFollowedTeams(userRepository.GetByName(System.Web.HttpContext.Current.User.Identity.Name).Id);
+                IEnumerable<Match> tempFollowed =  _repository.GetMatchesOfFollowedTeams(userRepository.GetByName(System.Web.HttpContext.Current.User.Identity.Name).Id);
+                ViewData["followedMatches"] = tempFollowed.OrderBy(o => o.Date).Reverse().ToList();
             }
-            ViewData["allMatches"] = _repository.GetAll();
+            IEnumerable<Match> tempAll = cache.GetOrSet("home.allMatches", ()=>_repository.GetAll());
+            ViewData["allMatches"] = tempAll.OrderBy(o => o.Date).Reverse().ToList();
             return View();
         }
 

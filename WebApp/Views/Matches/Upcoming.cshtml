@@ -1,0 +1,65 @@
+﻿@using Model.Enitites
+@model dynamic
+
+@{
+    ViewBag.Title = "Upcoming Matches";
+    Response.AppendHeader("Access-Control-Allow-Origin", "*");
+}
+<script src="~/Scripts/place_bet.js"></script>
+<h2>Upcoming Matches:</h2>
+<div class="container">
+    @foreach (Match item in (IEnumerable<Match>) ViewData["matches"])
+    {
+        <div class="row">
+            <a href="/teams/team/@item.HomeTeam.Id">
+                <div class="col-xs-3">
+                    <img class="img-responsive team-logo" src="@item.HomeTeam.LogoURI"/>
+                </div>
+                <div class="col-xs-2">
+                    @item.HomeTeam
+                </div>
+            </a>
+            <div class="col-xs-2">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#BetModal-@item.Id">Place a bet!</button> <br/>
+                @item.Date
+            </div>
+            <a href="/teams/team/@item.AwayTeam.Id">
+                <div class="col-xs-2">
+                    @item.AwayTeam
+                </div>
+                <div class="col-xs-3">
+                    <img class="img-responsive team-logo" src="@item.AwayTeam.LogoURI"/>
+                </div>
+            </a>
+        </div>
+
+        <!--Modal - Begin-->
+        <div id="BetModal-@item.Id" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Place a bet</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" class="place-bet" meta-match="@item.Id">
+                            <label for="homeTeamScore">@item.HomeTeam.Name</label>
+                            <input class="bet-input" type="number" name="homeTeamScore" min="0" value="0" />
+                            <input class="bet-input" type="number" name="awayTeamScore" min="0" value="0" />
+                            <label for="awayTeamScore">@item.AwayTeam.Name</label>
+                            <button type="submit">Place a bet!</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--Modal - End-->
+    }
+</div>

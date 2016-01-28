@@ -1,0 +1,71 @@
+﻿@using Model.Enitites
+@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    League league = (League) ViewData["league"];
+}
+
+<h2>@league.Name</h2>
+<div class="container">
+    <h4>Upcomming matches:</h4>
+    @foreach (Match item in league.Matches.OrderBy(o => o.Date).Reverse())
+    {
+        if (item.AwayTeamScore == null)
+        {
+            <div class="row">
+                <a href="/teams/team/@item.HomeTeam.Id">
+                    <div class="col-xs-3">
+                        <img class="img-responsive team-logo" src="@item.HomeTeam.LogoURI"/>
+                    </div>
+                    <div class="col-xs-2">
+                        @item.HomeTeam
+                    </div>
+                </a>
+                <div class="col-xs-2">
+                    @item.HomeTeamScore - @item.AwayTeamScore <br/>
+                    @item.Date
+                </div>
+                <a href="/teams/team/@item.AwayTeam.Id">
+                    <div class="col-xs-2">
+                        @item.AwayTeam
+                    </div>
+                    <div class="col-xs-3">
+                        <img class="img-responsive team-logo" src="@item.AwayTeam.LogoURI"/>
+                    </div>
+                </a>
+            </div>
+        }
+    }
+</div>
+<div class="container">
+    <h4>Previous matches:</h4>
+    @foreach (Match item in league.Matches.OrderBy(o=>o.Date).Reverse())
+    {
+        if (item.AwayTeamScore != null)
+        {
+            <div class="row">
+                <a href="/teams/team/@item.HomeTeam.Id">
+                    <div class="col-xs-3">
+                        <img class="img-responsive team-logo" src="@item.HomeTeam.LogoURI" />
+                    </div>
+                    <div class="col-xs-2">
+                        @item.HomeTeam
+                    </div>
+                </a>
+                <div class="col-xs-2">
+                    @item.HomeTeamScore - @item.AwayTeamScore <br />
+                    @item.Date
+                </div>
+                <a href="/teams/team/@item.AwayTeam.Id">
+                    <div class="col-xs-2">
+                        @item.AwayTeam
+                    </div>
+                    <div class="col-xs-3">
+                        <img class="img-responsive team-logo" src="@item.AwayTeam.LogoURI" />
+                    </div>
+                </a>
+            </div>
+        }
+    }
+</div>

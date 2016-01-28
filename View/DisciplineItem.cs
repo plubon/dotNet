@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +17,7 @@ namespace View
         public DisciplineItem(Discipline _discipline)
         {
             discipline = _discipline;
-            Text = discipline.Name;
+            MediaTypeNames.Text = discipline.Name;
             Anchor = AnchorStyles.Top;
             
 

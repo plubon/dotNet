@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,7 +24,7 @@ namespace View
         {
             discipline = _discipline;
             InitializeComponent();
-            Text = discipline.Name + " Leagues:";
+            MediaTypeNames.Text = discipline.Name + " Leagues:";
             leaguesGrid.AutoGenerateColumns = true;
 
 
