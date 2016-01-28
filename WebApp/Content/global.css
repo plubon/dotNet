@@ -16,3 +16,7 @@
 input.bet-input {
     width: 50px;
 }
+.followed {
+    background-color: red;
+    border: aqua;
+}

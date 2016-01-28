@@ -16,7 +16,14 @@
 @if (Request.IsAuthenticated)
 {
     <div class="row">
-        <button class="btn btn-success" id="follow-team">Follow!</button>
+        @if ((bool) ViewData["followed"] == true)
+        {
+            <button class="btn btn-success followed" id="follow-team" meta-uid="@ViewData["uid"]" meta-tid="@team.Id">Following! @ViewData["uid"]</button>
+        }
+        else
+        {
+            <button class="btn btn-success" id="follow-team" meta-uid="@ViewData["uid"]" meta-tid="@team.Id">Follow! @ViewData["uid"]</button>
+        }
     </div>
 }
 <div class="container" id="upcomming-matches">

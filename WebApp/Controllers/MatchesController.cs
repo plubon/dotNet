@@ -37,6 +37,7 @@ namespace WebApp.Controllers
 
                 IEnumerable<Bet> bets = user.Bets;
                 ViewData["bets"] = bets;
+                ViewData["uid"] = user.Id;
             }
             List<Match> upcomingMatches = new List<Match>();
 

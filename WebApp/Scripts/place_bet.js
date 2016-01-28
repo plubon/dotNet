@@ -1,7 +1,7 @@
 ﻿$(document).ready(function() {
     $(".place-bet").submit(function (e) {
         e.preventDefault();
-        var user_id = '1';
+        var user_id = $(this).attr("meta-uid");
         var match_id = $(this).attr("meta-match");
         console.log(match_id);
         var data = $(this).serializeArray();

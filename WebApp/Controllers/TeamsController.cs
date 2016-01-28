@@ -26,8 +26,16 @@ namespace WebApp.Controllers
                 System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
             {
                 User user = userRepository.GetByName(System.Web.HttpContext.Current.User.Identity.Name);
-                
-                
+                ViewData["uid"] = user.Id;
+                ViewData["followed"] = false;
+                foreach (Team team in user.FollowedTeams)
+                {
+                    if (team.Id == id)
+                    {
+                        ViewData["followed"] = true;
+                        break;
+                    }
+                }
             }
             ViewData["team"] = cache.GetOrSet("teams.team"+id,()=>teamRepo.GetById(id));
             return View();

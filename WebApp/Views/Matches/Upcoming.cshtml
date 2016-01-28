@@ -71,7 +71,7 @@
                             <h4 class="modal-title">Place a bet</h4>
                         </div>
                         <div class="modal-body">
-                            <form method="post" class="place-bet" meta-match="@item.Id">
+                            <form method="post" class="place-bet" meta-match="@item.Id" meta-uid="@ViewData["uid"]">
                                 <label for="homeTeamScore">@item.HomeTeam.Name</label>
                                 <input class="bet-input" type="number" name="homeTeamScore" min="0" value="0"/>
                                 <input class="bet-input" type="number" name="awayTeamScore" min="0" value="0"/>
