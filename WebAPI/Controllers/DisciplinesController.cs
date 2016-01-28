@@ -10,7 +10,7 @@ using Repository;
 
 namespace WebAPI.Controllers
 {
-    [EnableCors(origins: "http://digitalathletics.azurewebsites.net", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://digitalathletics.azurewebsites.net , http://localhost:17197", headers: "*", methods: "*")]
     [RoutePrefix("api/disciplines")]
     public class DisciplinesController : ApiController
     {
