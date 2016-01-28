@@ -12,13 +12,13 @@ namespace Repository
         public bool ContainsBet(int mId, int uId)
         {
            OpenSession();
-           return QueryOverModel().Where(x => x.User.Id == uId || x.Match.Id == mId).Take(1).RowCount()>0;  
+           return QueryOverModel().Where(x => x.User.Id == uId && x.Match.Id == mId).Take(1).RowCount()>0;  
         }
 
         public Bet GetByMatchAndUserIds(int mId, int uId)
         {
             OpenSession();
-            return QueryOverModel().Where(x => x.User.Id == uId || x.Match.Id == mId).Take(1).SingleOrDefault();
+            return QueryOverModel().Where(x => x.User.Id == uId && x.Match.Id == mId).Take(1).SingleOrDefault();
         }
     }
 }

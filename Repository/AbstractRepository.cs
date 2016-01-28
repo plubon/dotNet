@@ -64,14 +64,20 @@ namespace Repository
         public void SaveOrUpdate(ModelClass entity)
         {
             OpenSession();
-            try
+            using (var tx = _session.BeginTransaction())
             {
+                try
+                {
                     _session.SaveOrUpdate(entity);
-                //_session.Flush();
+                    tx.Commit();
+                    //_session.Flush();
+                }
+                catch (Exception e)
+                {
+
+                }
+                //_session.Close();
             }
-            catch(Exception e)
-            { }
-            //_session.Close();
         }
 
         public void Delete(ModelClass entity)

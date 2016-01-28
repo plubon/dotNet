@@ -30,6 +30,8 @@ namespace WebAPI.Controllers
             uRepo.SaveOrUpdate(u);
             return Ok();
         }
+
+        [HttpPost]
         [Route("unfollow")]
         public IHttpActionResult UnFollow()
         {
@@ -41,8 +43,11 @@ namespace WebAPI.Controllers
                 return NotFound();
             var u = uRepo.GetById(uId);
             var t = tRepo.GetById(tId);
-            if (u.FollowedTeams.Contains(t))
+            if (u.FollowedTeams.Where(x => x.Id == t.Id).Take(1).Count() > 0)
+            {
                 u.FollowedTeams.Remove(t);
+                t.FollowedBy.Remove(u);
+            }
             uRepo.SaveOrUpdate(u);
             return Ok();
         }
