@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using MetroFramework;
 using MetroFramework.Forms;
 using Model.Enitites;
@@ -22,7 +24,7 @@ namespace View
         {
             league = _league;
             InitializeComponent();
-            Text = "Update league: "+league.Name;
+            MediaTypeNames.Text = "Update league: "+league.Name;
             nameInput.Text = league.Name;
             descriptionInput.Text = league.Description;
         }
@@ -52,7 +54,7 @@ namespace View
 
         private void dismissButton_Click(object sender, EventArgs e)
         {
-            Close();
+            VisualStyleElement.ToolTip.Close();
         }
     }
 }

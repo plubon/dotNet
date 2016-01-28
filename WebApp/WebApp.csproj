@@ -197,6 +197,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\digitalathletics.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\place_bet.js" />
     <Content Include="Scripts\team.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -248,6 +249,7 @@
     <Content Include="Views\Leagues\Index.cshtml" />
     <Content Include="Views\Matches\League.cshtml" />
     <Content Include="Views\Matches\Index.cshtml" />
+    <Content Include="Views\Matches\Upcoming.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

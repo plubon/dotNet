@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -35,7 +36,7 @@ namespace View
             handle = _handle;
             InitializeComponent();
             nameInput.Text = handle.Name;
-            Text = "Update Team " + handle.Name;
+            MediaTypeNames.Text = "Update Team " + handle.Name;
         }
 
         private void TeamCreate_Load(object sender, EventArgs e)

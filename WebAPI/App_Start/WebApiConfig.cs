@@ -13,6 +13,7 @@ namespace WebAPI
             // Web API configuration and services
 
             // Web API routes
+            config.EnableCors();
             config.MapHttpAttributeRoutes();
             config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling =
                 Newtonsoft.Json.PreserveReferencesHandling.All;

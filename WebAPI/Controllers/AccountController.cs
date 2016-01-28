@@ -7,9 +7,11 @@ using System.Web.Http;
 using Repository;
 using Microsoft.AspNet.Identity;
 using System.Web;
+using System.Web.Http.Cors;
 
 namespace WebAPI.Controllers
 {
+    [EnableCors(origins: "http://digitalathletics.azurewebsites.net", headers: "*", methods: "*")]
     [RoutePrefix("api/accounts")]
     public class AccountController : ApiController
     {

@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using MetroFramework;
 using MetroFramework.Forms;
 using Model.Enitites;
@@ -28,7 +30,7 @@ namespace View
         {
             discipline = _discipline;
             InitializeComponent();
-            Text = "Update: "+discipline.Name;
+            MediaTypeNames.Text = "Update: "+discipline.Name;
             nameInput.Text = discipline.Name;
             descriptionInput.Text = discipline.Description;
 
@@ -52,7 +54,7 @@ namespace View
                     MessageBoxIcon.Information);
                 if (result == DialogResult.OK)
                 {
-                    Close();
+                    VisualStyleElement.ToolTip.Close();
                 }
             }
             else
@@ -64,7 +66,7 @@ namespace View
 
         private void dismissButton_Click(object sender, EventArgs e)
         {
-            Close();
+            VisualStyleElement.ToolTip.Close();
         }
     }
 }

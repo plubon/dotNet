@@ -6,9 +6,11 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace WebAPI.Controllers
 {
+    [EnableCors(origins: "http://digitalathletics.azurewebsites.net", headers: "*", methods: "*")]
     [RoutePrefix("api/follows")]
     public class FollowController : ApiController
     {
