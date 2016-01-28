@@ -1,0 +1,152 @@
+﻿@using Model.Enitites;
+@{
+    ViewBag.Title = "Team";
+    Team team = (Team)ViewData["team"];
+}
+<script type="text/javascript" src="~/Scripts/team.js"></script>
+
+<div class="row">
+    <div class="col-xs-2">
+        <img class="img-responsive" src="@team.LogoURI" />
+    </div>
+    <div class="col-xs-10">
+        <h2>@team.Name</h2>
+    </div>
+</div>
+@if (Request.IsAuthenticated)
+{
+    <div class="row">
+        <button class="btn btn-success" id="follow-team">Follow!</button>
+    </div>
+}
+<div class="container" id="upcomming-matches">
+    <h2>Upcomming matches of team</h2>
+    <div class="container">
+        <h4>Home Matches</h4>
+        @foreach (Match item in team.HomeMatches.OrderBy(o => o.Date).Reverse())
+        {
+            if (item.HomeTeamScore == null)
+            {
+                <div class="row">
+                    <a href="/teams/team/@item.HomeTeam.Id">
+                        <div class="col-xs-3">
+                            <img class="img-responsive team-logo" src="@item.HomeTeam.LogoURI" />
+                        </div>
+                        <div class="col-xs-2">
+                            @item.HomeTeam
+                        </div>
+                    </a>
+                    <div class="col-xs-2">
+                        @item.HomeTeamScore - @item.AwayTeamScore <br />
+                        @item.Date
+                    </div>
+                    <a href="/teams/team/@item.AwayTeam.Id">
+                        <div class="col-xs-2">
+                            @item.AwayTeam
+                        </div>
+                        <div class="col-xs-3">
+                            <img class="img-responsive team-logo" src="@item.AwayTeam.LogoURI" />
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+    </div>
+    <div class="container">
+        <h4>Away Matches</h4>
+        @foreach (Match item in team.AwayMatches.OrderBy(o => o.Date).Reverse())
+        {
+            if (item.AwayTeamScore == null)
+            {
+                <div class="row">
+                    <a href="/teams/team/@item.HomeTeam.Id">
+                        <div class="col-xs-3">
+                            <img class="img-responsive team-logo" src="@item.HomeTeam.LogoURI" />
+                        </div>
+                        <div class="col-xs-2">
+                            @item.HomeTeam
+                        </div>
+                    </a>
+                    <div class="col-xs-2">
+                        @item.HomeTeamScore - @item.AwayTeamScore <br />
+                        @item.Date
+                    </div>
+                    <a href="/teams/team/@item.AwayTeam.Id">
+                        <div class="col-xs-2">
+                            @item.AwayTeam
+                        </div>
+                        <div class="col-xs-3">
+                            <img class="img-responsive team-logo" src="@item.AwayTeam.LogoURI" />
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+    </div>
+</div>
+<div class="container" id="upcomming-matches">
+    <h2>Previous matches of team</h2>
+    <div class="container">
+        <h4>Home Matches</h4>
+        @foreach (Match item in team.HomeMatches.OrderBy(o => o.Date).Reverse())
+        {
+            if (item.HomeTeamScore != null)
+            {
+                <div class="row">
+                    <a href="/teams/team/@item.HomeTeam.Id">
+                        <div class="col-xs-3">
+                            <img class="img-responsive team-logo" src="@item.HomeTeam.LogoURI" />
+                        </div>
+                        <div class="col-xs-2">
+                            @item.HomeTeam
+                        </div>
+                    </a>
+                    <div class="col-xs-2">
+                        @item.HomeTeamScore - @item.AwayTeamScore <br />
+                        @item.Date
+                    </div>
+                    <a href="/teams/team/@item.AwayTeam.Id">
+                        <div class="col-xs-2">
+                            @item.AwayTeam
+                        </div>
+                        <div class="col-xs-3">
+                            <img class="img-responsive team-logo" src="@item.AwayTeam.LogoURI" />
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+    </div>
+   
+    <div class="container">
+        <h4>Away Matches</h4>
+        @foreach (Match item in team.AwayMatches.OrderBy(o => o.Date).Reverse())
+        {
+            if (item.AwayTeamScore != null)
+            {
+                <div class="row">
+                    <a href="/teams/team/@item.HomeTeam.Id">
+                        <div class="col-xs-3">
+                            <img class="img-responsive team-logo" src="@item.HomeTeam.LogoURI" />
+                        </div>
+                        <div class="col-xs-2">
+                            @item.HomeTeam
+                        </div>
+                    </a>
+                    <div class="col-xs-2">
+                        @item.HomeTeamScore - @item.AwayTeamScore <br />
+                        @item.Date
+                    </div>
+                    <a href="/teams/team/@item.AwayTeam.Id">
+                        <div class="col-xs-2">
+                            @item.AwayTeam
+                        </div>
+                        <div class="col-xs-3">
+                            <img class="img-responsive team-logo" src="@item.AwayTeam.LogoURI" />
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+    </div>
+</div>

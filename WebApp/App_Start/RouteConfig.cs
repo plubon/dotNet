@@ -18,6 +18,16 @@ namespace WebApp
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+              name: "Team",
+              url: "teams/team/{id}"
+          );
+            routes.MapRoute(
+              name: "League matches",
+              url: "matches/league/{id}"
+          );
+
+
         }
     }
 }

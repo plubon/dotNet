@@ -1,3 +1,15 @@
-﻿.team-logo {
-    height: 25px;
+﻿.matches-container{
+    text-align: center;
+}
+.team-logo {
+    height: 50px;
+        display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.team-logo-big {
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
